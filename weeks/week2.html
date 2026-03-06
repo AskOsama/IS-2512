@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2: Computer Forensic Investigation Procedures</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="week2_ar.html" class="lang-button" title="Switch to Arabic">العربية</a>
+    </div>
+
+    <header>
+        <h1>Computer Forensic Investigation Procedures</h1>
+        <p class="subtitle">Week 2: Detectives of the Digital World</p>
+    </header>
+
+    <nav class="table-of-contents no-print">
+        <h2>Contents</h2>
+        <ul>
+            <li><a href="#objectives">Learning Objectives</a></li>
+            <li><a href="#introduction">1. Introduction - Detectives of the Digital World</a></li>
+            <li><a href="#e-evidence-trails">2. E-Evidence Trails and Hidden Files</a></li>
+            <li><a href="#what-to-look-for">3. Knowing What to Look For</a></li>
+            <li><a href="#five-ws">4. The Five Ws</a></li>
+            <li><a href="#investigation-overview">5. Computer Forensic Investigation Procedures</a></li>
+            <li><a href="#identification">6. Step 1: Identification</a></li>
+            <li><a href="#preservation">7. Step 2: Preservation</a></li>
+            <li><a href="#extraction">8. Step 3: Extraction</a></li>
+            <li><a href="#interpretation">9. Step 4: Interpretation</a></li>
+            <li><a href="#documentation">10. Step 5: Documentation</a></li>
+            <li><a href="#three-as">11. Computer Forensics Science - The 3 A's Methodology</a></li>
+            <li><a href="#summary">Summary</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Learning Objectives -->
+        <section id="objectives" class="learning-objectives">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this week, you will be able to:</p>
+            <ul>
+                <li>Describe the basic steps in a computer forensics investigation</li>
+                <li>Identify legal and ethical issues affecting evidence search and seizure</li>
+                <li>Identify types of challenges to the admissibility of e-evidence</li>
+                <li>Explain chain of custody and its importance</li>
+            </ul>
+        </section>
+
+        <!-- Section 1: Introduction -->
+        <section id="introduction" class="content-section">
+            <h2>1. Introduction - Detectives of the Digital World</h2>
+
+            <div class="definition">
+                <h3>The Digital Detective</h3>
+                <p>Computer forensic investigators are the <strong>detectives of the digital world</strong>. Just as traditional detectives piece together clues at a crime scene, digital forensic experts reconstruct events by examining electronic evidence left behind on computers, networks, and digital devices.</p>
+            </div>
+
+            <p>In today's connected world, virtually every crime leaves a digital footprint. Whether it's:</p>
+            <ul>
+                <li>Financial fraud involving digital transactions</li>
+                <li>Corporate espionage through email communications</li>
+                <li>Criminal activities planned via messaging apps</li>
+                <li>Identity theft using stolen digital credentials</li>
+                <li>Traditional crimes with digital components</li>
+            </ul>
+
+            <div class="key-message">
+                <p><strong>Key Insight:</strong> The forensic investigator must follow a methodical, scientific approach to ensure that evidence is properly collected, preserved, and presented in a manner that will be admissible in court.</p>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Interactive Demo:</strong> Experience the forensic investigation process through our interactive demonstration.</p>
+                <p style="margin-top: 0.5rem;"><a href="../demos/investigation_procedures_demo.html" style="color: var(--secondary-color); font-weight: 600;">Launch Investigation Procedures Demo &rarr;</a></p>
+            </div>
+        </section>
+
+        <!-- Section 2: E-Evidence Trails and Hidden Files -->
+        <section id="e-evidence-trails" class="content-section">
+            <h2>2. E-Evidence Trails and Hidden Files</h2>
+
+            <p>Digital activities leave behind traces that investigators can follow, much like footprints at a physical crime scene.</p>
+
+            <h3>Types of E-Evidence Trails</h3>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Sources of Digital Evidence Trails</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>System Logs</h4>
+                        <p>Records of system events, user logins, file access, and application usage that create a timeline of activities.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Internet History</h4>
+                        <p>Browser history, cookies, cached pages, and download records that reveal online activities.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Communication Records</h4>
+                        <p>Email headers, chat logs, message metadata, and VoIP records that show who communicated with whom.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>File Metadata</h4>
+                        <p>Creation dates, modification times, author information, and access timestamps embedded in files.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Hidden Files and Data</h3>
+            <p>Not all evidence is visible at first glance. Investigators must look for:</p>
+            <ul>
+                <li><strong>Deleted files:</strong> Files removed by users but still recoverable from disk</li>
+                <li><strong>Hidden system files:</strong> Files marked as hidden by the operating system</li>
+                <li><strong>Slack space:</strong> Unused space in file clusters that may contain remnants of old data</li>
+                <li><strong>Unallocated space:</strong> Areas of the disk not currently assigned to any file</li>
+                <li><strong>Steganography:</strong> Data hidden within images, audio, or other files</li>
+                <li><strong>Encrypted data:</strong> Information protected by encryption algorithms</li>
+            </ul>
+
+            <div class="forensic-note">
+                <p>Modern forensic tools can recover data from all these sources, which is why the belief that "deleted means gone" is one of the most common fallacies about digital evidence.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Knowing What to Look For -->
+        <section id="what-to-look-for" class="content-section">
+            <h2>3. Knowing What to Look For</h2>
+
+            <p>Successful forensic investigation requires knowing both <strong>what</strong> to look for and <strong>where</strong> to find it.</p>
+
+            <h3>Technical Knowledge Requirements</h3>
+            <ul>
+                <li>Understanding of operating systems (Windows, macOS, Linux)</li>
+                <li>Knowledge of file systems (NTFS, FAT, HFS+, ext4)</li>
+                <li>Familiarity with network protocols and architecture</li>
+                <li>Understanding of database structures</li>
+                <li>Knowledge of encryption and security mechanisms</li>
+            </ul>
+
+            <h3>Data vs. Metadata</h3>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Data and Metadata in Evidence</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>Data (Content)</h4>
+                        <p>The actual content of files: text in documents, pixels in images, audio samples in recordings, records in databases.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Metadata (Data About Data)</h4>
+                        <p>Information about files: creation/modification dates, author, location data, camera settings, file size, access history.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Important:</strong> Metadata often provides more valuable investigative information than the data itself. A photo's metadata can reveal when and where it was taken, while an email's headers can trace its true origin.</p>
+            </div>
+
+            <h3>Common Evidence Locations</h3>
+            <ul>
+                <li><strong>User directories:</strong> Documents, downloads, desktop folders</li>
+                <li><strong>Temporary files:</strong> Cached data, temp folders, swap files</li>
+                <li><strong>Registry (Windows):</strong> Configuration and usage history</li>
+                <li><strong>Browser data:</strong> History, bookmarks, saved passwords</li>
+                <li><strong>Email clients:</strong> Local message stores, contact lists</li>
+                <li><strong>Cloud storage:</strong> Synchronized files and activity logs</li>
+            </ul>
+        </section>
+
+        <!-- Section 4: The Five Ws -->
+        <section id="five-ws" class="content-section">
+            <h2>4. The Five Ws</h2>
+
+            <p>Just like traditional journalism and investigation, computer forensics seeks to answer the fundamental questions:</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">The Five Ws of Forensic Investigation</h3>
+                </div>
+                <div class="evidence-grid">
+                    <div class="evidence-card evidence-artifact">
+                        <div class="evidence-icon">👤</div>
+                        <h4>WHO</h4>
+                        <p>Who performed the action? User accounts, login records, biometrics</p>
+                    </div>
+                    <div class="evidence-card evidence-inculpatory">
+                        <div class="evidence-icon">❓</div>
+                        <h4>WHAT</h4>
+                        <p>What was done? Files accessed, programs run, data transferred</p>
+                    </div>
+                    <div class="evidence-card evidence-exculpatory">
+                        <div class="evidence-icon">📍</div>
+                        <h4>WHERE</h4>
+                        <p>Where did it occur? IP addresses, geolocation, physical location of devices</p>
+                    </div>
+                    <div class="evidence-card evidence-admissible">
+                        <div class="evidence-icon">🕐</div>
+                        <h4>WHEN</h4>
+                        <p>When did it happen? Timestamps, log entries, file modification dates</p>
+                    </div>
+                    <div class="evidence-card evidence-inadmissible">
+                        <div class="evidence-icon">💡</div>
+                        <h4>WHY</h4>
+                        <p>Why was it done? Motive inferred from communications, search history, planning documents</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forensic-note">
+                <p>The Five Ws framework helps investigators organize their findings and ensure they gather comprehensive evidence that tells the complete story of what occurred.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: Investigation Procedures Overview -->
+        <section id="investigation-overview" class="content-section">
+            <h2>5. Computer Forensic Investigation Procedures</h2>
+
+            <div class="definition">
+                <h3>The Five-Step Process</h3>
+                <p>Computer forensic investigation follows a systematic five-step process designed to ensure evidence integrity and admissibility. Each step builds upon the previous one, and skipping or improperly executing any step can compromise the entire investigation.</p>
+            </div>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">The 5 Investigation Procedures</h3>
+                </div>
+                <div class="data-categories-grid">
+                    <div class="data-category-card">
+                        <h4>1. Identification</h4>
+                    </div>
+                    <div class="data-category-card">
+                        <h4>2. Preservation</h4>
+                    </div>
+                    <div class="data-category-card">
+                        <h4>3. Extraction</h4>
+                    </div>
+                    <div class="data-category-card">
+                        <h4>4. Interpretation</h4>
+                    </div>
+                    <div class="data-category-card">
+                        <h4>5. Documentation</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Critical Point:</strong> These steps must be performed in sequence. Proper documentation occurs throughout all stages, but each procedural step depends on the successful completion of the previous one.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: Identification -->
+        <section id="identification" class="content-section">
+            <h2>6. Step 1: Identification</h2>
+
+            <div class="definition">
+                <h3>What is Identification?</h3>
+                <p><strong>Identification</strong> is the process of recognizing and determining potential sources of digital evidence relevant to the investigation. This includes identifying devices, storage media, and data that may contain evidence.</p>
+            </div>
+
+            <h3>Key Activities in Identification</h3>
+            <ul>
+                <li><strong>Scene survey:</strong> Assessing the physical environment for digital devices</li>
+                <li><strong>Device inventory:</strong> Cataloging all computers, phones, storage media, and network equipment</li>
+                <li><strong>Evidence assessment:</strong> Determining which devices are likely to contain relevant evidence</li>
+                <li><strong>Prioritization:</strong> Deciding the order of examination based on volatility and relevance</li>
+                <li><strong>Legal considerations:</strong> Ensuring proper authorization exists for each potential source</li>
+            </ul>
+
+            <h3>Types of Evidence to Identify</h3>
+            <ul>
+                <li>Computers (desktops, laptops, servers)</li>
+                <li>Mobile devices (smartphones, tablets)</li>
+                <li>Storage media (USB drives, external hard drives, SD cards, CDs/DVDs)</li>
+                <li>Network devices (routers, switches, firewalls)</li>
+                <li>IoT devices (smart home devices, wearables)</li>
+                <li>Cloud storage accounts</li>
+                <li>Email and social media accounts</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>Volatility Consideration</h4>
+                <p>Evidence must be prioritized based on volatility - data that can be lost quickly (like RAM contents) should be captured before more stable evidence (like hard drive contents). The order of volatility from most to least volatile:</p>
+                <ul>
+                    <li>CPU registers and cache</li>
+                    <li>RAM (system memory)</li>
+                    <li>Network state and connections</li>
+                    <li>Running processes</li>
+                    <li>Hard drive data</li>
+                    <li>Backup media</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Section 7: Preservation -->
+        <section id="preservation" class="content-section">
+            <h2>7. Step 2: Preservation</h2>
+
+            <div class="definition">
+                <h3>What is Preservation?</h3>
+                <p><strong>Preservation</strong> is the process of protecting identified evidence from alteration, damage, or destruction. This ensures the integrity of evidence and maintains its admissibility in legal proceedings.</p>
+            </div>
+
+            <h3>Key Preservation Techniques</h3>
+            <ul>
+                <li><strong>Securing the scene:</strong> Controlling access to prevent evidence tampering</li>
+                <li><strong>Documentation:</strong> Photographing and recording the state of evidence</li>
+                <li><strong>Write blocking:</strong> Using hardware or software to prevent modifications</li>
+                <li><strong>Forensic imaging:</strong> Creating bit-by-bit copies of storage media</li>
+                <li><strong>Hash verification:</strong> Using MD5 or SHA hashes to verify integrity</li>
+            </ul>
+
+            <div class="key-message">
+                <p><strong>Chain of Custody:</strong> A critical aspect of preservation is maintaining the chain of custody - a documented record of who has had access to the evidence, when, and what was done with it.</p>
+            </div>
+
+            <h3>Chain of Custody Requirements</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Element</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Collector Identity</strong></td>
+                        <td>Name, role, and contact information of the person who collected the evidence</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Date/Time</strong></td>
+                        <td>Precise timestamps for when evidence was collected and transferred</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Location</strong></td>
+                        <td>Where the evidence was found and where it has been stored</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Description</strong></td>
+                        <td>Detailed description of the evidence item and its condition</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transfer Records</strong></td>
+                        <td>Documentation of every time the evidence changed hands</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="forensic-note">
+                <p>Any break in the chain of custody can lead to evidence being challenged or excluded in court. Meticulous documentation is essential.</p>
+            </div>
+        </section>
+
+        <!-- Section 8: Extraction -->
+        <section id="extraction" class="content-section">
+            <h2>8. Step 3: Extraction</h2>
+
+            <div class="definition">
+                <h3>What is Extraction?</h3>
+                <p><strong>Extraction</strong> is the process of recovering data from the preserved evidence using forensic tools and techniques. This includes recovering deleted files, decrypting protected data, and parsing complex data structures.</p>
+            </div>
+
+            <h3>Types of Data Extraction</h3>
+            <ul>
+                <li><strong>Logical extraction:</strong> Copying files through the operating system</li>
+                <li><strong>Physical extraction:</strong> Bit-by-bit imaging of entire storage media</li>
+                <li><strong>Live extraction:</strong> Capturing data from running systems</li>
+                <li><strong>Network extraction:</strong> Capturing network traffic and logs</li>
+            </ul>
+
+            <h3>Common Extraction Activities</h3>
+            <ul>
+                <li>Recovering deleted files from unallocated space</li>
+                <li>Extracting files from damaged or corrupted media</li>
+                <li>Decrypting encrypted files and containers</li>
+                <li>Parsing email databases and chat logs</li>
+                <li>Extracting browser artifacts (history, cache, cookies)</li>
+                <li>Recovering data from mobile device backups</li>
+                <li>Extracting metadata from documents and images</li>
+            </ul>
+
+            <div class="forensic-note">
+                <p><strong>Tool Selection:</strong> Investigators must use validated forensic tools that are accepted by courts. Popular tools include EnCase, FTK, Autopsy, and specialized mobile forensic tools like Cellebrite.</p>
+            </div>
+        </section>
+
+        <!-- Section 9: Interpretation -->
+        <section id="interpretation" class="content-section">
+            <h2>9. Step 4: Interpretation</h2>
+
+            <div class="definition">
+                <h3>What is Interpretation?</h3>
+                <p><strong>Interpretation</strong> is the process of analyzing extracted data to understand its meaning, relevance, and significance to the investigation. This is where raw data becomes meaningful evidence.</p>
+            </div>
+
+            <h3>Interpretation Activities</h3>
+            <ul>
+                <li><strong>Timeline analysis:</strong> Constructing a chronological sequence of events</li>
+                <li><strong>Link analysis:</strong> Identifying relationships between entities (people, devices, accounts)</li>
+                <li><strong>Pattern recognition:</strong> Identifying suspicious patterns or anomalies</li>
+                <li><strong>Content analysis:</strong> Reviewing the meaning and context of recovered data</li>
+                <li><strong>Correlation:</strong> Connecting evidence from multiple sources</li>
+            </ul>
+
+            <h3>Questions to Answer During Interpretation</h3>
+            <ul>
+                <li>What does the evidence show happened?</li>
+                <li>Can actions be attributed to a specific user or account?</li>
+                <li>What is the timeline of relevant events?</li>
+                <li>Are there alternative explanations for the evidence?</li>
+                <li>What evidence supports or contradicts the working theory?</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>Objectivity is Essential</h4>
+                <p>Forensic examiners must remain objective and consider all possibilities. Both <strong>inculpatory evidence</strong> (supporting guilt) and <strong>exculpatory evidence</strong> (supporting innocence) must be identified and reported. Confirmation bias can compromise an investigation.</p>
+            </div>
+        </section>
+
+        <!-- Section 10: Documentation -->
+        <section id="documentation" class="content-section">
+            <h2>10. Step 5: Documentation</h2>
+
+            <div class="definition">
+                <h3>What is Documentation?</h3>
+                <p><strong>Documentation</strong> is the ongoing process of recording all actions, findings, and conclusions throughout the investigation. Proper documentation ensures reproducibility and supports the credibility of evidence in legal proceedings.</p>
+            </div>
+
+            <h3>What Must Be Documented</h3>
+            <ul>
+                <li><strong>Evidence handling:</strong> Collection, transfer, storage procedures</li>
+                <li><strong>Tools used:</strong> Software/hardware versions, configurations, commands</li>
+                <li><strong>Procedures followed:</strong> Step-by-step account of analysis methods</li>
+                <li><strong>Findings:</strong> All relevant discoveries, both significant and minor</li>
+                <li><strong>Timestamps:</strong> Date and time of all actions</li>
+                <li><strong>Analyst information:</strong> Who performed each step</li>
+            </ul>
+
+            <h3>Types of Documentation</h3>
+            <ul>
+                <li><strong>Examination notes:</strong> Detailed notes taken during analysis</li>
+                <li><strong>Technical reports:</strong> Comprehensive reports for technical audiences</li>
+                <li><strong>Executive summaries:</strong> High-level overviews for non-technical readers</li>
+                <li><strong>Expert witness reports:</strong> Formal reports for legal proceedings</li>
+                <li><strong>Visual aids:</strong> Diagrams, timelines, and charts to illustrate findings</li>
+            </ul>
+
+            <div class="key-message">
+                <p><strong>Reproducibility Standard:</strong> Documentation should be detailed enough that another qualified examiner could follow the same steps and reach the same conclusions. This is critical for evidence to withstand legal challenge.</p>
+            </div>
+        </section>
+
+        <!-- Section 11: The 3 A's Methodology -->
+        <section id="three-as" class="content-section">
+            <h2>11. Computer Forensics Science - The 3 A's Methodology</h2>
+
+            <div class="definition">
+                <h3>The Scientific Method in Digital Forensics</h3>
+                <p>Computer forensics is grounded in scientific methodology. The <strong>3 A's methodology</strong> provides a framework for ensuring investigations are conducted with scientific rigor.</p>
+            </div>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">The 3 A's: Acquire, Authenticate, Analyze</h3>
+                </div>
+                <div class="skills-triangle-container">
+                    <div class="skills-triangle">
+                        <div class="skill-pillar pillar-legal">
+                            Acquire<br>Proper<br>Collection
+                        </div>
+                        <div class="skill-pillar pillar-tech">
+                            Authenticate<br>Verify<br>Integrity
+                        </div>
+                        <div class="skill-pillar pillar-investigative">
+                            Analyze<br>Examine<br>Evidence
+                        </div>
+                        <div class="skills-center">
+                            <strong>3 A's</strong><br>
+                            <small>Method</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <article class="forensic-concept">
+                <h4>1. Acquire</h4>
+                <p>The first step is to properly <strong>acquire</strong> the evidence:</p>
+                <ul>
+                    <li>Use proper forensic techniques to collect data</li>
+                    <li>Create forensic images of storage media</li>
+                    <li>Capture volatile data before it's lost</li>
+                    <li>Follow legal requirements for evidence collection</li>
+                    <li>Maintain chain of custody from the moment of acquisition</li>
+                </ul>
+            </article>
+
+            <article class="forensic-concept">
+                <h4>2. Authenticate</h4>
+                <p>Once acquired, evidence must be <strong>authenticated</strong> to prove it hasn't been altered:</p>
+                <ul>
+                    <li>Calculate hash values (MD5, SHA-1, SHA-256) of original evidence</li>
+                    <li>Verify hash values of forensic copies match originals</li>
+                    <li>Document authentication at every transfer point</li>
+                    <li>Use write-blockers to prevent accidental modification</li>
+                    <li>Maintain detailed logs of all access to evidence</li>
+                </ul>
+            </article>
+
+            <article class="forensic-concept">
+                <h4>3. Analyze</h4>
+                <p>The final step is thorough <strong>analysis</strong> of the authenticated evidence:</p>
+                <ul>
+                    <li>Use validated forensic tools for examination</li>
+                    <li>Apply systematic search methodologies</li>
+                    <li>Document all findings and their significance</li>
+                    <li>Consider alternative interpretations of evidence</li>
+                    <li>Draw conclusions based only on the evidence</li>
+                </ul>
+            </article>
+
+            <div class="forensic-note">
+                <p>The 3 A's methodology ensures that forensic findings can withstand legal scrutiny. Each step must be performed properly, or the entire investigation may be compromised.</p>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section id="summary" class="content-section summary">
+            <h2>Summary and Key Takeaways</h2>
+
+            <h3>What We've Learned</h3>
+            <ol>
+                <li><strong>Computer forensic investigators are digital detectives</strong> who follow electronic trails to reconstruct events and find evidence.</li>
+
+                <li><strong>E-evidence trails exist everywhere</strong> - in system logs, internet history, communication records, and file metadata. Even "deleted" data can often be recovered.</li>
+
+                <li><strong>Knowing what to look for</strong> requires understanding both the technical aspects of digital systems and the difference between data and metadata.</li>
+
+                <li><strong>The Five Ws</strong> (Who, What, Where, When, Why) provide a framework for organizing investigative questions and findings.</li>
+
+                <li><strong>The five-step investigation procedure</strong> (Identification, Preservation, Extraction, Interpretation, Documentation) must be followed in sequence to maintain evidence integrity.</li>
+
+                <li><strong>Chain of custody</strong> is critical for evidence admissibility - every transfer and access must be documented.</li>
+
+                <li><strong>The 3 A's methodology</strong> (Acquire, Authenticate, Analyze) ensures scientific rigor in forensic investigations.</li>
+
+                <li><strong>Documentation must be thorough enough</strong> for another examiner to reproduce the analysis and reach the same conclusions.</li>
+
+                <li><strong>Legal and ethical considerations</strong> affect every stage of the investigation, from initial identification to final presentation of evidence.</li>
+            </ol>
+
+            <div class="key-message">
+                <p><strong>Looking Ahead:</strong> In Week 3, we'll dive deeper into file systems analysis and learn how different operating systems store data, including techniques for recovering deleted files and examining file system metadata.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section id="image-credits">
+            <h2>Credits and Attributions</h2>
+            <p class="credits-intro">All diagrams in this document are original educational works created specifically for this course.</p>
+            <ul class="credits-list">
+                <li><strong>Five Ws Diagram:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+                <li><strong>Investigation Procedures Flow:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+                <li><strong>3 A's Methodology:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+                <li><strong>Evidence Trails Grid:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+            </ul>
+        </section>
+
+        <p style="text-align: center; margin-top: 2rem;">
+            <a href="../index.html">&larr; Back to Course Home</a>
+        </p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 1: Introduction to Computer Forensics</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="week1_ar.html" class="lang-button" title="Switch to Arabic">العربية</a>
+    </div>
+
+    <header>
+        <h1>Introduction to Computer Forensics</h1>
+        <p class="subtitle">Week 1: Fundamentals of Digital Investigation</p>
+    </header>
+
+    <nav class="table-of-contents no-print">
+        <h2>Contents</h2>
+        <ul>
+            <li><a href="#objectives">Learning Objectives</a></li>
+            <li><a href="#what-is">1. What is Computer Forensics?</a></li>
+            <li><a href="#not-hacking">2. Computer Forensics is NOT Hacking</a></li>
+            <li><a href="#intro">3. Introduction to E-Evidence</a></li>
+            <li><a href="#crimes">4. Basics of Crimes</a></li>
+            <li><a href="#crime-categories">5. Crime Categories and Sentencing</a></li>
+            <li><a href="#cybercrime">6. Cybercrime Categories</a></li>
+            <li><a href="#skills">7. Computer Forensics Skills</a></li>
+            <li><a href="#evidence">8. Evidence Basics and Types</a></li>
+            <li><a href="#electronic-evidence">9. Electronic Evidence</a></li>
+            <li><a href="#importance">10. Importance of Computer Forensics</a></li>
+            <li><a href="#discovery">11. Discovery Process and Methods</a></li>
+            <li><a href="#stored-data">12. Categories of Stored Data</a></li>
+            <li><a href="#challenges">13. Challenges and Deletion Fallacies</a></li>
+            <li><a href="#summary">Summary</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Learning Objectives -->
+        <section id="objectives" class="learning-objectives">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this week, you will be able to:</p>
+            <ul>
+                <li>Understand the concept of computer forensic investigation</li>
+                <li>Understand what constitutes a crime and identify categories of crime</li>
+                <li>Explain the different types of evidence</li>
+                <li>Identify how electronic evidence differs from physical evidence</li>
+            </ul>
+        </section>
+
+        <!-- Section 1: What is Computer Forensics? -->
+        <section id="what-is" class="content-section">
+            <h2>1. What is Computer Forensics?</h2>
+
+            <div class="definition">
+                <h3>Definition</h3>
+                <p><strong>Computer Forensics</strong> is the search for, and the collection of, evidence from computer systems in a standardized and well-documented manner to maintain its admissibility and probative value in a legal proceeding.</p>
+            </div>
+
+            <p>Computer forensics involves:</p>
+            <ul>
+                <li><strong>Identification:</strong> Recognizing potential sources of digital evidence</li>
+                <li><strong>Preservation:</strong> Protecting evidence from alteration or destruction</li>
+                <li><strong>Collection:</strong> Gathering evidence using proper techniques</li>
+                <li><strong>Analysis:</strong> Examining data to find relevant information</li>
+                <li><strong>Documentation:</strong> Recording all findings and processes</li>
+                <li><strong>Presentation:</strong> Reporting results in a legally acceptable manner</li>
+            </ul>
+
+            <div class="key-message">
+                <p><strong>Interactive Demo:</strong> Experience the 6-step forensic investigation process through our interactive demonstration.</p>
+                <p style="margin-top: 0.5rem;"><a href="../demos/forensic_process_demo.html" style="color: var(--secondary-color); font-weight: 600;">Launch Forensic Process Demo &rarr;</a></p>
+            </div>
+        </section>
+
+        <!-- Section 2: Computer Forensics is NOT Hacking -->
+        <section id="not-hacking" class="content-section">
+            <h2>2. Computer Forensics is NOT Hacking</h2>
+
+            <div class="warning-box">
+                <h4>Critical Legal Warning</h4>
+                <p>Computer forensics must be conducted within strict legal boundaries. The following activities are illegal and can result in felony charges:</p>
+                <ul>
+                    <li><strong>Never</strong> use "Spy-ware"</li>
+                    <li><strong>Never</strong> "hack" a password</li>
+                    <li><strong>Never</strong> login to an account unauthorized (without a warrant or court order)</li>
+                    <li>Keystroke loggers are no longer legal without proper authorization</li>
+                </ul>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Important:</strong> All of these violations are now (usually) a felony. The law is in flux, so always stay updated on current legal requirements. When in doubt, consult legal counsel before proceeding with any investigation.</p>
+            </div>
+
+            <article class="forensic-concept">
+                <h4>The Ethical Investigator</h4>
+                <p>A computer forensic investigator must:</p>
+                <ul>
+                    <li>Obtain proper legal authorization before accessing any system</li>
+                    <li>Follow established protocols and procedures</li>
+                    <li>Document every action taken during an investigation</li>
+                    <li>Maintain the integrity of all evidence</li>
+                    <li>Never alter or destroy original evidence</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Section 3: Introduction to E-Evidence -->
+        <section id="intro" class="content-section">
+            <h2>3. Introduction to E-Evidence</h2>
+
+            <p>Criminal investigations involve the analysis of various types of evidence:</p>
+            <ul>
+                <li>Ballistic or bloodstain patterns</li>
+                <li>Gunpowder residue</li>
+                <li>Tire tracks</li>
+                <li>Fingerprints</li>
+                <li>Evidence left by electronic devices</li>
+            </ul>
+
+            <div class="definition">
+                <h3>E-Evidence</h3>
+                <p><strong>E-evidence</strong> (Electronic Evidence) is the digital equivalent of the physical evidence found at crime scenes. It provides crucial information about activities, communications, and intentions.</p>
+            </div>
+
+            <h3>The Digital Landscape</h3>
+            <ul>
+                <li>The expansion of the Internet provides countless opportunities for crimes to be committed</li>
+                <li>Digital technologies record and document electronic trails of information that can be analyzed later</li>
+            </ul>
+
+            <h4>Sources of Electronic Trails:</h4>
+            <ul>
+                <li>E-mail communications</li>
+                <li>Instant messages (IM)</li>
+                <li>Web site visits and browsing history</li>
+                <li>PDAs and mobile devices</li>
+                <li>Smart phones</li>
+                <li>Cookies and log files</li>
+            </ul>
+        </section>
+
+        <!-- Section 4: Basics of Crimes -->
+        <section id="crimes" class="content-section">
+            <h2>4. Basics of Crimes</h2>
+
+            <p>Early cases illustrate the importance of knowing the law regarding computer crimes:</p>
+
+            <div class="case-study">
+                <h4>Case Study: Morris Worm (1988)</h4>
+                <ul>
+                    <li>Robert T. Morris Jr. created one of the first recognized worms</li>
+                    <li>Morris was charged with violation of the <strong>Computer Fraud and Abuse Act (CFAA)</strong></li>
+                    <li>Sentenced to: 3 years probation, 400 hours of community service, and a $10,500 fine</li>
+                </ul>
+            </div>
+
+            <div class="case-study">
+                <h4>Case Study: Lovebug Virus (2000)</h4>
+                <ul>
+                    <li>Created by Onel De Guzman from the Philippines</li>
+                    <li>Caused approximately <strong>$7 billion in damage</strong> worldwide</li>
+                    <li>De Guzman was released because <strong>no law in the Philippines</strong> made what he had done a crime at that time</li>
+                </ul>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Key Insight:</strong> Computer crimes can be prosecuted <em>only if they violate existing laws</em>. This highlights the importance of having up-to-date cybercrime legislation.</p>
+            </div>
+
+            <h3>Definition of Crime</h3>
+            <div class="definition">
+                <p>A <strong>crime</strong> is an offensive act against society that violates a law and is punishable by the government.</p>
+            </div>
+
+            <p>Two important principles in this definition:</p>
+            <ol>
+                <li>The act must violate at least one criminal law</li>
+                <li>It is the government (not the victim of the crime) that punishes the violator</li>
+            </ol>
+        </section>
+
+        <!-- Section 5: Crime Categories and Sentencing -->
+        <section id="crime-categories" class="content-section">
+            <h2>5. Crime Categories and Sentencing</h2>
+
+            <p>Crimes are divided into two broad categories:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Severity</th>
+                        <th>Punishment</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Felonies</strong></td>
+                        <td>Serious crimes</td>
+                        <td>Fine and more than one year in prison</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Misdemeanors</strong></td>
+                        <td>Lesser crimes</td>
+                        <td>Fine and less than one year in prison</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="forensic-note">
+                <p>The severity of punishment for computer crimes depends on factors such as the amount of damage caused, the number of victims, and whether the perpetrator has prior offenses.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: Cybercrime Categories -->
+        <section id="cybercrime" class="content-section">
+            <h2>6. Cybercrime Categories</h2>
+
+            <p>The following terms are used interchangeably:</p>
+            <ul>
+                <li>Computer crime</li>
+                <li>Cybercrime</li>
+                <li>Information crime</li>
+                <li>High-tech crime</li>
+            </ul>
+
+            <h3>Two Categories of Computer-Related Offenses</h3>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Computer Crime Categories</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>Computer as Target</h4>
+                        <p>The computer or its data is the target of the crime. Examples: hacking, data theft, malware attacks, denial of service.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Computer as Instrument</h4>
+                        <p>The computer is used as a tool to commit the crime. Examples: fraud, identity theft, online harassment, distribution of illegal content.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Information Warfare and Cyberterrorism</h3>
+            <p><strong>Information warfare</strong> is the extension of war into and through cyberspace. It includes attacks on critical infrastructure, espionage, and disruption of communications.</p>
+        </section>
+
+        <!-- Section 7: Computer Forensics Skills -->
+        <section id="skills" class="content-section">
+            <h2>7. Computer Forensics Skills</h2>
+
+            <p>An investigator's success depends on three skill sets. The value of recovered evidence depends on expertise in these areas:</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">The Forensic Investigator's Skills Triangle</h3>
+                </div>
+                <div class="skills-triangle-container">
+                    <div class="skills-triangle">
+                        <div class="skill-pillar pillar-legal">
+                            Legal Procedures<br>&<br>Laws of Evidence
+                        </div>
+                        <div class="skill-pillar pillar-tech">
+                            Computer<br>Technology
+                        </div>
+                        <div class="skill-pillar pillar-investigative">
+                            Investigative<br>Techniques
+                        </div>
+                        <div class="skills-center">
+                            <strong>Forensic</strong><br>
+                            <small>Expert</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <article class="forensic-concept">
+                <h4>1. Legal Procedures & Laws of Evidence</h4>
+                <ul>
+                    <li>Understanding search and seizure laws</li>
+                    <li>Maintaining chain of custody</li>
+                    <li>Ensuring evidence admissibility</li>
+                    <li>Expert witness testimony requirements</li>
+                </ul>
+            </article>
+
+            <article class="forensic-concept">
+                <h4>2. Computer Technology</h4>
+                <ul>
+                    <li>Operating systems and file systems</li>
+                    <li>Network protocols and architecture</li>
+                    <li>Data storage and recovery techniques</li>
+                    <li>Encryption and security mechanisms</li>
+                </ul>
+            </article>
+
+            <article class="forensic-concept">
+                <h4>3. Investigative Techniques</h4>
+                <ul>
+                    <li>Evidence identification and collection</li>
+                    <li>Interview and interrogation methods</li>
+                    <li>Crime scene documentation</li>
+                    <li>Analytical and critical thinking</li>
+                </ul>
+            </article>
+        </section>
+
+        <!-- Section 8: Evidence Basics and Types -->
+        <section id="evidence" class="content-section">
+            <h2>8. Evidence Basics and Types</h2>
+
+            <div class="definition">
+                <h3>What is Evidence?</h3>
+                <p><strong>Evidence</strong> is proof of a fact about what did or did not happen.</p>
+            </div>
+
+            <h3>Three Types of Evidence for Persuasion</h3>
+            <ul>
+                <li><strong>Testimony of a witness</strong> - Verbal or written statements from individuals</li>
+                <li><strong>Physical evidence</strong> - Tangible items that can be collected and examined</li>
+                <li><strong>Electronic evidence</strong> - Digital data stored on or transmitted by electronic devices</li>
+            </ul>
+
+            <div class="key-message">
+                <p><strong>Important:</strong> Both cybercrimes and traditional crimes can leave cybertrails of evidence.</p>
+            </div>
+
+            <h3>Types of Evidence</h3>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Evidence Classification</h3>
+                </div>
+                <div class="evidence-grid">
+                    <div class="evidence-card evidence-artifact">
+                        <div class="evidence-icon">🔍</div>
+                        <h4>Artifact Evidence</h4>
+                        <p>Change in evidence that causes investigator to think the evidence relates to the crime</p>
+                    </div>
+                    <div class="evidence-card evidence-inculpatory">
+                        <div class="evidence-icon">⚖️</div>
+                        <h4>Inculpatory Evidence</h4>
+                        <p>Evidence that supports a given theory (points toward guilt)</p>
+                    </div>
+                    <div class="evidence-card evidence-exculpatory">
+                        <div class="evidence-icon">🛡️</div>
+                        <h4>Exculpatory Evidence</h4>
+                        <p>Evidence that contradicts a given theory (points toward innocence)</p>
+                    </div>
+                    <div class="evidence-card evidence-admissible">
+                        <div class="evidence-icon">✓</div>
+                        <h4>Admissible Evidence</h4>
+                        <p>Evidence allowed to be presented at trial</p>
+                    </div>
+                    <div class="evidence-card evidence-inadmissible">
+                        <div class="evidence-icon">✗</div>
+                        <h4>Inadmissible Evidence</h4>
+                        <p>Evidence that cannot be presented at trial</p>
+                    </div>
+                    <div class="evidence-card evidence-tainted">
+                        <div class="evidence-icon">⚠️</div>
+                        <h4>Tainted Evidence</h4>
+                        <p>Evidence obtained from illegal search or seizure</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Additional Evidence Types</h3>
+            <ul>
+                <li><strong>Circumstantial evidence:</strong> Shows circumstances that logically lead to a conclusion of fact</li>
+                <li><strong>Hearsay evidence:</strong> Secondhand evidence (testimony about what someone else said)</li>
+                <li><strong>Material evidence:</strong> Evidence relevant and significant to the lawsuit</li>
+                <li><strong>Immaterial evidence:</strong> Evidence that is not relevant or significant</li>
+            </ul>
+        </section>
+
+        <!-- Section 9: Electronic Evidence -->
+        <section id="electronic-evidence" class="content-section">
+            <h2>9. Electronic Evidence: Technology and Legal Issues</h2>
+
+            <div class="forensic-note">
+                <h4>Key Characteristics of Electronic Evidence</h4>
+                <ul>
+                    <li><strong>Volatile:</strong> Electronic evidence may be easily changed</li>
+                    <li><strong>Persistent:</strong> Conversely, it is difficult to delete entirely</li>
+                    <li><strong>Abundant:</strong> E-mail evidence has become the most common type of e-evidence</li>
+                </ul>
+            </div>
+
+            <h3>Search Warrant Requirements</h3>
+            <p>For evidence to be admissible, proper legal procedures must be followed:</p>
+            <ul>
+                <li>A search warrant is issued only if law enforcement provides sufficient proof that there is <strong>probable cause</strong> a crime has been committed</li>
+                <li>The law officer must specify what premises, things, or persons will be searched</li>
+                <li>Evidence discovered during the search can be seized</li>
+            </ul>
+
+            <div class="case-study">
+                <h4>Real Case: Forensics Saves a Life (2004)</h4>
+                <p>In 2004, Bobbie Jo Stinnett was murdered and her unborn baby "kidnapped." Police examined her computer and traced an IP address to Lisa Montgomery, who had corresponded with Stinnett over the Internet. This case demonstrates how computer forensics can be crucial in solving violent crimes.</p>
+            </div>
+        </section>
+
+        <!-- Section 10: Importance of Computer Forensics -->
+        <section id="importance" class="content-section">
+            <h2>10. Importance of Computer Forensics</h2>
+
+            <h3>Computer Forensics Investigations Supply Evidence For:</h3>
+
+            <h4>Criminal Cases:</h4>
+            <ul>
+                <li>Homicide investigations</li>
+                <li>Financial fraud</li>
+                <li>Drug-related crimes</li>
+                <li>Child exploitation cases</li>
+            </ul>
+
+            <h4>Civil Cases:</h4>
+            <ul>
+                <li>Fraud claims</li>
+                <li>Divorce proceedings</li>
+                <li>Discrimination lawsuits</li>
+                <li>Harassment cases</li>
+            </ul>
+
+            <p>Computer forensics is also used to <strong>prevent, detect, and respond</strong> to cyber attacks.</p>
+
+            <div class="case-study">
+                <h4>Largest Computer Forensics Case in History: Enron</h4>
+                <ul>
+                    <li>Government investigators searched more than 400 computers and handheld devices</li>
+                    <li>Over 10,000 backup tapes were examined</li>
+                    <li>The investigation included records from Arthur Andersen, Enron's accounting firm</li>
+                    <li>"Explosive" e-mail from J.P. Morgan Chase employees about Enron was part of a corollary case</li>
+                </ul>
+            </div>
+
+            <h3>What Computer Forensics Can Reveal:</h3>
+            <ul>
+                <li>Theft of intellectual property, trade secrets, confidential data</li>
+                <li>Defamatory or revealing statements in chat rooms, usenet groups, or IM</li>
+                <li>Sending of harassing, hateful, or other objectionable e-mail</li>
+                <li>Downloading of criminally pornographic material</li>
+                <li>Downloading or installation of unlicensed software</li>
+                <li>Online gambling, insider trading, solicitation, drug trafficking</li>
+                <li>Files accessed, altered, or saved</li>
+            </ul>
+
+            <h3>What Computer Forensics Can Recover:</h3>
+            <ul>
+                <li>Lost client records intentionally deleted by an employee</li>
+                <li>Proof that an ex-employee stole company trade secrets</li>
+                <li>Proof of violations of noncompete agreements</li>
+                <li>Proof that a supplier's information security negligence caused costly mistakes</li>
+                <li>Proof of a safer design of a defective item in a product liability suit</li>
+                <li>Earlier drafts of sensitive documents or altered spreadsheets to prove intent in a fraud claim</li>
+            </ul>
+        </section>
+
+        <!-- Section 11: Discovery Process and Methods -->
+        <section id="discovery" class="content-section">
+            <h2>11. Discovery Process and Methods</h2>
+
+            <div class="definition">
+                <h3>Discovery Process</h3>
+                <p><strong>Discovery</strong> is the pretrial right of each party to "discover" or learn about the opponent's case. It includes information that must be provided by each party if requested.</p>
+            </div>
+
+            <h3>Methods of Discovery</h3>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Four Discovery Methods</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>Interrogatories</h4>
+                        <p>Written answers made under oath to written questions</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Requests for Admissions</h4>
+                        <p>Intended to ascertain the authenticity of a document or the truth of an assertion</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Requests for Production</h4>
+                        <p>Involves the inspection of documents and property</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Depositions</h4>
+                        <p>Out-of-court testimony made under oath by the opposing party or other witnesses</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Increased Demand for E-Discovery</h3>
+            <ul>
+                <li>Most business operations and transactions are done on computers and stored on digital devices</li>
+                <li>Most common means of communication are electronic</li>
+                <li>People are candid in their e-mail and instant messages</li>
+                <li>E-evidence is very difficult to destroy</li>
+            </ul>
+        </section>
+
+        <!-- Section 12: Categories of Stored Data -->
+        <section id="stored-data" class="content-section">
+            <h2>12. Categories of Stored Data</h2>
+
+            <p>Digital data exists in various states and locations:</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Data Storage Categories</h3>
+                </div>
+                <div class="data-categories-grid">
+                    <div class="data-category-card">
+                        <h4>Active, Online Data</h4>
+                    </div>
+                    <div class="data-category-card">
+                        <h4>Near-line Data</h4>
+                    </div>
+                    <div class="data-category-card">
+                        <h4>Offline Storage / Archives</h4>
+                    </div>
+                    <div class="data-category-card">
+                        <h4>Backup Tapes</h4>
+                    </div>
+                    <div class="data-category-card">
+                        <h4>Erased, Fragmented, or Damaged Data</h4>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forensic-note">
+                <p>Forensic investigators must be aware of all potential data sources and understand how to properly access and preserve each type.</p>
+            </div>
+        </section>
+
+        <!-- Section 13: Challenges and Deletion Fallacies -->
+        <section id="challenges" class="content-section">
+            <h2>13. Challenges and Deletion Fallacies</h2>
+
+            <h3>Challenges in Computer Forensics</h3>
+            <ul>
+                <li>Evidence collection is done in an adversarial environment</li>
+                <li>Judge and jury are not technical</li>
+                <li>Commercial testing tools may not work in all situations</li>
+            </ul>
+
+            <h3>Common "Deletion" / "Obfuscation" Fallacies</h3>
+
+            <div class="warning-box">
+                <h4>Myth vs. Reality</h4>
+
+                <p><strong>Myth:</strong> "I delete the file, it's gone"</p>
+                <p><strong>Reality:</strong> Deleted files are recoverable using digital forensics tools</p>
+
+                <hr style="margin: 1rem 0; border: none; border-top: 1px solid #ddd;">
+
+                <p><strong>Myth:</strong> "I changed the name of the file, now no one can find it"</p>
+                <p><strong>Reality:</strong> Digital forensics tools immediately identify files based on content - names do not matter at all</p>
+
+                <hr style="margin: 1rem 0; border: none; border-top: 1px solid #ddd;">
+
+                <p><strong>Myth:</strong> "I formatted the drive"</p>
+                <p><strong>Reality:</strong> This destroys almost nothing - data can still be recovered</p>
+
+                <hr style="margin: 1rem 0; border: none; border-top: 1px solid #ddd;">
+
+                <p><strong>Myth:</strong> "I use only web-based email"</p>
+                <p><strong>Reality:</strong> Some email fragments are still present locally in browser cache and temporary files</p>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section id="summary" class="content-section summary">
+            <h2>Summary and Key Takeaways</h2>
+
+            <h3>What We've Learned</h3>
+            <ol>
+                <li><strong>E-evidence plays an important role</strong> in crime reconstruction and is the digital equivalent of physical evidence.</li>
+
+                <li><strong>Crimes are not limited to cybercrimes;</strong> cyber trails are left by many traditional crimes as well.</li>
+
+                <li><strong>Without evidence of an act or activity that violates a statute, there is no crime.</strong> This is why understanding laws is crucial for forensic investigators.</li>
+
+                <li><strong>Rules must be followed</strong> to gather, search for, and seize evidence in order to protect individual rights and ensure admissibility.</li>
+
+                <li><strong>Computer forensics is NOT hacking.</strong> Investigators must operate within strict legal boundaries.</li>
+
+                <li><strong>Three skill sets are essential:</strong> Legal Procedures, Computer Technology, and Investigative Techniques.</li>
+
+                <li><strong>E-discovery</strong> refers to the discovery of electronic documents, data, e-mail, etc., and is more complex than traditional discovery.</li>
+
+                <li><strong>Tools used to recover lost or destroyed data</strong> can also be used in e-discovery of evidence.</li>
+
+                <li><strong>Common deletion fallacies</strong> show that data is rarely truly destroyed, making forensic recovery possible in most cases.</li>
+            </ol>
+
+            <div class="key-message">
+                <p><strong>Looking Ahead:</strong> In Week 2, we'll explore data acquisition methods and learn how to properly collect digital evidence while maintaining its integrity.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section id="image-credits">
+            <h2>Credits and Attributions</h2>
+            <p class="credits-intro">All diagrams in this document are original educational works created specifically for this course.</p>
+            <ul class="credits-list">
+                <li><strong>Skills Triangle Diagram:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+                <li><strong>Evidence Types Grid:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+                <li><strong>Discovery Methods:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+                <li><strong>Data Categories:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+            </ul>
+        </section>
+
+        <p style="text-align: center; margin-top: 2rem;">
+            <a href="../index.html">&larr; Back to Course Home</a>
+        </p>
+    </footer>
+</body>
+</html>
