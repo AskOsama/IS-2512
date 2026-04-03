@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 3: Computer Forensic Investigation</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="week3_ar.html" class="lang-button" title="Switch to Arabic">العربية</a>
+    </div>
+
+    <header>
+        <h1>Computer Forensic Investigation</h1>
+        <p class="subtitle">Week 3: Evidence, Legal Procedures, and Cybercrime</p>
+    </header>
+
+    <nav class="table-of-contents no-print">
+        <h2>Contents</h2>
+        <ul>
+            <li><a href="#objectives">Learning Objectives</a></li>
+            <li><a href="#admissibility">1. Admissibility of Evidence</a></li>
+            <li><a href="#cd-universe">2. Case Study: CD Universe Prosecution Failure</a></li>
+            <li><a href="#digital-profiling">3. Digital Profiling</a></li>
+            <li><a href="#crimes-solved">4. Crimes Solved Using Forensics</a></li>
+            <li><a href="#investigation-methods">5. Forensics Investigation Methods</a></li>
+            <li><a href="#unallocated-slack">6. Unallocated Space and File Slack</a></li>
+            <li><a href="#challenges">7. Challenges to Evidence</a></li>
+            <li><a href="#search-warrants">8. Search Warrants</a></li>
+            <li><a href="#terrorist-trial">9. A Terrorist's Trial</a></li>
+            <li><a href="#motives">10. Motives for Cybercrimes</a></li>
+            <li><a href="#categories">11. Categories of Cybercrimes</a></li>
+            <li><a href="#chain-of-custody">12. Chain of Custody Procedures</a></li>
+            <li><a href="#report-procedures">13. Report Procedures</a></li>
+            <li><a href="#responsibilities">14. Investigator's Responsibilities</a></li>
+            <li><a href="#summary">Summary</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Learning Objectives -->
+        <section id="objectives" class="learning-objectives">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this week, you will be able to:</p>
+            <ul>
+                <li>Explain the requirements for admissibility of digital evidence in court</li>
+                <li>Describe digital profiling and how e-evidence reveals behavior patterns</li>
+                <li>List the objectives of a forensic investigation method</li>
+                <li>Explain unallocated space and file slack and their importance to investigators</li>
+                <li>Describe challenges to digital evidence and the role of search warrants</li>
+                <li>Identify motives and categories of cybercrimes</li>
+                <li>Explain chain of custody procedures and the three C's</li>
+                <li>Describe proper report procedures and investigator responsibilities</li>
+            </ul>
+        </section>
+
+        <!-- Section 1: Admissibility of Evidence -->
+        <section id="admissibility" class="content-section">
+            <h2>1. Admissibility of Evidence</h2>
+
+            <div class="definition">
+                <h3>The Goal of Investigation</h3>
+                <p>The primary goal of any computer forensic investigation is to <strong>collect evidence using accepted methods</strong> that will withstand legal scrutiny. Evidence must be gathered in a manner that ensures its integrity and reliability so that it can be presented in a court of law.</p>
+            </div>
+
+            <p>For evidence to be admissible in court, it must meet several critical requirements:</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Requirements for Evidence Admissibility</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>Judge's Acceptance</h4>
+                        <p>The judge must accept (admit) the evidence for it to be considered by the court. This decision is known as <strong>admission of evidence</strong>. Without the judge's approval, evidence cannot be presented to the jury or considered in the verdict.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Legal Search and Seizure</h4>
+                        <p>Evidence must be obtained through <strong>legal search and seizure</strong> procedures. This means investigators must have proper authorization (such as a warrant) before collecting evidence from a suspect's devices or premises.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Chain of Custody</h4>
+                        <p>A complete and unbroken <strong>chain of custody</strong> must be maintained from the moment evidence is collected until it is presented in court. Every person who handles the evidence must be documented.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Accepted Methods</h4>
+                        <p>Evidence collection and analysis must follow <strong>accepted forensic methods</strong> and use validated tools. Improperly collected evidence can be challenged and excluded from proceedings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Critical Point:</strong> If any of these requirements are not met, the evidence may be deemed inadmissible, potentially allowing a guilty party to go free. The investigator's primary responsibility is to ensure all evidence meets the standards for admissibility.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: CD Universe Case Study -->
+        <section id="cd-universe" class="content-section">
+            <h2>2. Case Study: CD Universe Prosecution Failure</h2>
+
+            <div class="warning-box">
+                <h4>When Evidence Handling Goes Wrong</h4>
+                <p>The CD Universe case is a cautionary tale about how improper evidence handling can destroy a prosecution, even when the suspect is identified.</p>
+            </div>
+
+            <h3>The Case</h3>
+            <p>CD Universe, an online music retailer, was the victim of an extortion attempt by a hacker known as <strong>"Maxim"</strong>. The hacker had stolen credit card numbers from the company's database and demanded a ransom for their return.</p>
+
+            <h3>What Went Wrong</h3>
+            <p>The FBI investigation was compromised because investigators <strong>used the original data instead of creating a forensic copy</strong>. This critical error violated fundamental forensic procedures:</p>
+            <ul>
+                <li>The original evidence was directly accessed and potentially altered</li>
+                <li>No forensic image (bit-by-bit copy) was created before analysis</li>
+                <li>The integrity of the evidence could not be verified</li>
+                <li>The chain of custody was effectively broken</li>
+            </ul>
+
+            <div class="forensic-note">
+                <p><strong>Lesson Learned:</strong> This case demonstrates why investigators must <strong>always</strong> work with forensic copies, never with original data. The first rule of digital forensics is to preserve the original evidence in an unaltered state. Even law enforcement agencies can fail prosecutions when this principle is violated.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Digital Profiling -->
+        <section id="digital-profiling" class="content-section">
+            <h2>3. Digital Profiling</h2>
+
+            <div class="definition">
+                <h3>What is Digital Profiling?</h3>
+                <p><strong>Digital profiling</strong> is the process of using electronic evidence (e-evidence) to build a behavioral profile of a suspect. E-evidence supplies investigators with <strong>behavior patterns</strong> that can reveal a person's habits, intentions, communications, and activities.</p>
+            </div>
+
+            <h3>Sources of E-Evidence for Profiling</h3>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Digital Profiling Evidence Sources</h3>
+                </div>
+                <div class="evidence-grid">
+                    <div class="evidence-card evidence-artifact">
+                        <div class="evidence-icon">&#128187;</div>
+                        <h4>Computer Data</h4>
+                        <p>Files, documents, browsing history, installed applications, system logs, and user activity records stored on computers and storage devices.</p>
+                    </div>
+                    <div class="evidence-card evidence-inculpatory">
+                        <div class="evidence-icon">&#128231;</div>
+                        <h4>Email</h4>
+                        <p>Email messages, attachments, headers, address books, and communication patterns that reveal relationships and intentions.</p>
+                    </div>
+                    <div class="evidence-card evidence-exculpatory">
+                        <div class="evidence-icon">&#128241;</div>
+                        <h4>Cell Phone</h4>
+                        <p>Call logs, text messages, GPS location data, app usage, and stored media from mobile devices that track movements and communications.</p>
+                    </div>
+                    <div class="evidence-card evidence-admissible">
+                        <div class="evidence-icon">&#128266;</div>
+                        <h4>Wiretaps</h4>
+                        <p>Legally authorized interceptions of communications, including phone calls, internet traffic, and electronic messages.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Important:</strong> Digital profiling allows investigators to piece together a comprehensive picture of a suspect's activities, relationships, and motives. The combination of evidence from multiple sources creates a powerful investigative tool that can either support or refute allegations.</p>
+            </div>
+        </section>
+
+        <!-- Section 4: Crimes Solved Using Forensics -->
+        <section id="crimes-solved" class="content-section">
+            <h2>4. Crimes Solved Using Forensics</h2>
+
+            <p>Digital forensics has played a crucial role in solving many high-profile criminal cases. The following table highlights notable cases where electronic evidence was instrumental in achieving justice:</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Criminal</th>
+                        <th>Crime</th>
+                        <th>E-Evidence Used</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Dennis Rader</strong></td>
+                        <td>Serial killer (BTK Killer)</td>
+                        <td>Metadata from a floppy disk sent to police traced back to his church computer, revealing his identity after decades of evasion.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lee Boyd Malvo / John Allen Muhammad</strong></td>
+                        <td>D.C. Sniper attacks</td>
+                        <td>Laptop computer evidence, phone records, and GPS data linked the suspects to the series of sniper shootings.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lisa Montgomery</strong></td>
+                        <td>Murder and kidnapping</td>
+                        <td>Internet search history showed research on childbirth and cesarean procedures, establishing premeditation.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>David Westerfield</strong></td>
+                        <td>Kidnapping and murder</td>
+                        <td>Computer forensics revealed internet browsing history containing child pornography, supporting the prosecution's case.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Scott Peterson</strong></td>
+                        <td>Murder of wife and unborn child</td>
+                        <td>Computer evidence including internet searches for boat launch sites and ocean currents in the area where the body was found.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Alejandro Avila</strong></td>
+                        <td>Kidnapping and murder</td>
+                        <td>Digital evidence from computers and electronic devices helped establish the suspect's movements and intent.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Zacarias Moussaoui</strong></td>
+                        <td>Terrorism (9/11 conspiracy)</td>
+                        <td>Laptop evidence containing flight simulation software, aviation training materials, and communications with other conspirators.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="forensic-note">
+                <p>These cases demonstrate that digital evidence can be decisive in both identifying suspects and proving their guilt. From metadata on floppy disks to internet search histories, the digital footprints we leave behind can serve as powerful evidence in criminal investigations.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: Forensics Investigation Methods -->
+        <section id="investigation-methods" class="content-section">
+            <h2>5. Forensics Investigation Methods</h2>
+
+            <div class="definition">
+                <h3>Investigation Objectives</h3>
+                <p>A forensic investigation follows specific methods designed to comprehensively examine digital evidence while maintaining its integrity. Each objective serves a specific purpose in building a complete picture of the evidence.</p>
+            </div>
+
+            <h3>Key Objectives of Forensic Investigation</h3>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Forensic Investigation Objectives</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>1. Protect the Suspect's System</h4>
+                        <p>Ensure the suspect's computer system is not altered or damaged during the investigation. Use write-blockers and work only with forensic copies.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>2. Discover All Files</h4>
+                        <p>Locate and catalog all files on the system, including active files, system files, and application files.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>3. Recover Deleted Files</h4>
+                        <p>Use forensic tools to recover files that have been deleted by the user but may still exist on the storage media.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>4. Reveal Hidden Files</h4>
+                        <p>Identify files that have been intentionally hidden through operating system features, file attribute manipulation, or other concealment methods.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Advanced Investigation Objectives</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>5. Access Encrypted Files</h4>
+                        <p>Attempt to decrypt password-protected or encrypted files using forensic decryption tools and techniques.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>6. Steganalysis</h4>
+                        <p>Detect and extract data hidden within other files (such as images, audio, or video) using steganographic techniques.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>7. Analyze Unallocated and Slack Space</h4>
+                        <p>Examine areas of the disk not currently assigned to active files, which may contain remnants of deleted or overwritten data.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>8. Print Analysis and Expert Testimony</h4>
+                        <p>Prepare printouts and reports of findings, and be prepared to provide expert testimony in court explaining the evidence and analysis methods.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Important:</strong> The investigator must follow all these objectives systematically. Missing any step could leave critical evidence undiscovered, potentially affecting the outcome of the case.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: Unallocated Space and File Slack -->
+        <section id="unallocated-slack" class="content-section">
+            <h2>6. Unallocated Space and File Slack</h2>
+
+            <div class="definition">
+                <h3>Unallocated Space</h3>
+                <p><strong>Unallocated space</strong> (also called free space) is the area on a hard drive that is <strong>not currently assigned to any file</strong> by the file system. When a file is deleted, the space it occupied is marked as unallocated, but the actual data may still remain on the disk until it is overwritten by new data.</p>
+            </div>
+
+            <div class="definition">
+                <h3>File Slack</h3>
+                <p><strong>File slack</strong> is the unused space within a <strong>file cluster</strong> that exists between the end of the actual file data and the end of the cluster. Because files rarely fill an entire cluster perfectly, the remaining space (slack) may contain data fragments from previously stored files.</p>
+            </div>
+
+            <h3>Types of File Slack</h3>
+            <ul>
+                <li><strong>RAM Slack:</strong> The space between the end of the file and the end of the last sector used by the file. This area may be filled with data from system memory (RAM).</li>
+                <li><strong>Drive Slack:</strong> The remaining sectors in the cluster that are not used by the file. These sectors may contain data from previously deleted files.</li>
+            </ul>
+
+            <h3>Why Are These Important for Investigators?</h3>
+            <ul>
+                <li>Unallocated space often contains <strong>recoverable deleted files</strong> and data fragments</li>
+                <li>File slack can reveal <strong>remnants of previously stored data</strong> that the user may have tried to destroy</li>
+                <li>Together, they can provide critical evidence that is <strong>invisible to normal users</strong> and standard file browsing tools</li>
+                <li>Forensic tools like EnCase and FTK can systematically <strong>search and analyze</strong> both unallocated space and file slack</li>
+                <li>This data may include deleted emails, documents, images, or other files relevant to the investigation</li>
+            </ul>
+
+            <div class="forensic-note">
+                <p>A common misconception is that deleting a file removes it permanently. In reality, the file system simply marks the space as available for reuse. The actual data persists until overwritten, making forensic recovery possible and these areas a goldmine for investigators.</p>
+            </div>
+        </section>
+
+        <!-- Section 7: Challenges to Evidence -->
+        <section id="challenges" class="content-section">
+            <h2>7. Challenges to Evidence</h2>
+
+            <div class="definition">
+                <h3>Suppression Hearings</h3>
+                <p>Defense attorneys may challenge the admissibility of digital evidence through <strong>suppression hearings</strong>. In these hearings, the defense argues that certain evidence should be excluded from trial because it was obtained improperly or in violation of the defendant's rights.</p>
+            </div>
+
+            <h3>Common Grounds for Challenging Evidence</h3>
+            <ul>
+                <li><strong>Illegal search and seizure:</strong> Evidence obtained without proper authorization (warrant) or in violation of the Fourth Amendment</li>
+                <li><strong>Broken chain of custody:</strong> Gaps or inconsistencies in the documentation of who handled the evidence</li>
+                <li><strong>Improper collection methods:</strong> Use of non-standard or unvalidated forensic tools and techniques</li>
+                <li><strong>Evidence contamination:</strong> Working with original evidence instead of forensic copies, or failure to use write-blockers</li>
+                <li><strong>Lack of qualification:</strong> The forensic examiner may lack proper credentials or training</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>Ethical Procedures Are Essential</h4>
+                <p>Investigators must follow <strong>ethical procedures</strong> at every stage of the investigation. Any deviation from accepted practices can provide grounds for evidence suppression. This includes obtaining proper authorization, using validated tools, maintaining chain of custody, and conducting analyses objectively without bias.</p>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Key Point:</strong> The best evidence in the world is worthless if it cannot be admitted in court. Forensic investigators must be as meticulous about their procedures as they are about their technical analysis.</p>
+            </div>
+        </section>
+
+        <!-- Section 8: Search Warrants -->
+        <section id="search-warrants" class="content-section">
+            <h2>8. Search Warrants</h2>
+
+            <div class="definition">
+                <h3>What is a Search Warrant?</h3>
+                <p>A <strong>search warrant</strong> is a legal document issued by a judge or magistrate that authorizes law enforcement to search a specific location for specific evidence. In digital forensics, warrants are required to search computers, mobile devices, cloud accounts, and other digital storage.</p>
+            </div>
+
+            <h3>Key Components of a Search Warrant</h3>
+            <ul>
+                <li><strong>Affidavit:</strong> A sworn statement by the investigator that presents facts and evidence to justify the search. The affidavit must demonstrate <strong>probable cause</strong> -- a reasonable belief that evidence of a crime will be found at the specified location.</li>
+                <li><strong>Probable Cause:</strong> The legal standard that must be met before a warrant is issued. The investigator must show that there is a reasonable basis to believe that the search will uncover evidence related to a crime.</li>
+                <li><strong>Specificity:</strong> The warrant must specifically describe the place to be searched and the items to be seized. Overly broad warrants may be challenged and invalidated.</li>
+            </ul>
+
+            <h3>Exceptions to Warrant Requirement</h3>
+            <p>There are certain circumstances where a search may be conducted without a warrant:</p>
+            <ul>
+                <li><strong>Consent:</strong> The owner or authorized user voluntarily agrees to the search</li>
+                <li><strong>Plain view:</strong> Evidence is in plain view during a lawful observation</li>
+                <li><strong>Exigent circumstances:</strong> Emergency situations where evidence may be destroyed if not immediately seized</li>
+                <li><strong>Search incident to arrest:</strong> A limited search conducted at the time of a lawful arrest</li>
+                <li><strong>Border searches:</strong> Special rules apply at international borders and customs checkpoints</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>Fourth Amendment Protection</h4>
+                <p>The Fourth Amendment to the U.S. Constitution protects individuals from unreasonable searches and seizures. Evidence obtained in violation of this amendment may be subject to the <strong>exclusionary rule</strong>, meaning it cannot be used in court. Forensic investigators must understand and respect these constitutional protections.</p>
+            </div>
+        </section>
+
+        <!-- Section 9: A Terrorist's Trial -->
+        <section id="terrorist-trial" class="content-section">
+            <h2>9. A Terrorist's Trial: The Moussaoui Case</h2>
+
+            <div class="definition">
+                <h3>Case Background</h3>
+                <p><strong>Zacarias Moussaoui</strong> was arrested in August 2001 on immigration charges. He had been attending flight school in Minnesota under suspicious circumstances, and his laptop computer was seized upon arrest.</p>
+            </div>
+
+            <h3>The FBI's Dilemma</h3>
+            <p>Before September 11, 2001, the FBI <strong>was denied permission</strong> to search Moussaoui's laptop. The request for a warrant was rejected because the legal standard for probable cause was deemed insufficient at the time.</p>
+
+            <h3>September 11 Aftermath</h3>
+            <p>After the devastating attacks of September 11, 2001, the significance of Moussaoui's case became clear:</p>
+            <ul>
+                <li>His laptop contained <strong>flight simulation software</strong> and aviation materials</li>
+                <li>Communications with other suspected terrorists were discovered</li>
+                <li>Evidence suggested he was aware of the planned attacks</li>
+                <li>He was eventually convicted as a co-conspirator in the 9/11 attacks</li>
+            </ul>
+
+            <div class="forensic-note">
+                <p><strong>Lesson Learned:</strong> This case highlighted the tension between civil liberties and national security. It contributed to significant changes in surveillance and search authority laws, including the passage of the USA PATRIOT Act, which expanded law enforcement's ability to obtain warrants for terrorism-related investigations.</p>
+            </div>
+        </section>
+
+        <!-- Section 10: Motives for Cybercrimes -->
+        <section id="motives" class="content-section">
+            <h2>10. Motives for Cybercrimes</h2>
+
+            <p>Understanding the motives behind cybercrimes helps investigators anticipate what evidence to look for and where to find it. The primary motives include:</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Common Motives for Cybercrimes</h3>
+                </div>
+                <div class="evidence-grid">
+                    <div class="evidence-card evidence-artifact">
+                        <div class="evidence-icon">&#128176;</div>
+                        <h4>Financial Gain</h4>
+                        <p>The most common motive. Includes fraud, theft of financial data, ransomware attacks, and unauthorized access to bank accounts or payment systems.</p>
+                    </div>
+                    <div class="evidence-card evidence-inculpatory">
+                        <div class="evidence-icon">&#128683;</div>
+                        <h4>Cover Up</h4>
+                        <p>Using digital methods to conceal other criminal activities, such as altering records, destroying logs, or creating false digital trails.</p>
+                    </div>
+                    <div class="evidence-card evidence-exculpatory">
+                        <div class="evidence-icon">&#128465;</div>
+                        <h4>Remove Evidence</h4>
+                        <p>Deleting, encrypting, or destroying digital evidence of crimes to avoid detection and prosecution.</p>
+                    </div>
+                    <div class="evidence-card evidence-admissible">
+                        <div class="evidence-icon">&#128274;</div>
+                        <h4>Steal Information</h4>
+                        <p>Unauthorized access to steal intellectual property, trade secrets, personal data, or classified information.</p>
+                    </div>
+                    <div class="evidence-card evidence-inadmissible">
+                        <div class="evidence-icon">&#127981;</div>
+                        <h4>Industrial Espionage</h4>
+                        <p>Corporate spying to gain competitive advantage by stealing proprietary information, research data, or business strategies from rival companies.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Investigative Insight:</strong> Identifying the motive helps narrow the scope of the investigation. For instance, if financial gain is suspected, investigators will focus on financial records, transaction logs, and banking-related evidence. If industrial espionage is the motive, the focus shifts to proprietary documents and external communications.</p>
+            </div>
+        </section>
+
+        <!-- Section 11: Categories of Cybercrimes -->
+        <section id="categories" class="content-section">
+            <h2>11. Categories of Cybercrimes</h2>
+
+            <p>Cybercrimes can be categorized based on the <strong>role the computer plays</strong> in the criminal activity. Understanding these categories helps investigators determine the appropriate forensic approach.</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Three Categories of Cybercrimes</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>1. Computer as Target</h4>
+                        <p>The computer or network itself is the target of the crime. Examples include hacking, denial-of-service attacks, malware distribution, unauthorized access, and website defacement. The criminal directly attacks the computer system.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>2. Computer as Instrument</h4>
+                        <p>The computer is used as a tool to commit the crime. Examples include online fraud, identity theft, phishing schemes, digital forgery, and cyber harassment. The computer is the means by which the crime is carried out.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>3. Computer as Incidental</h4>
+                        <p>The computer is not central to the crime but contains evidence related to it. Examples include a drug dealer's customer list stored on a computer, financial records of money laundering, or communications planning a physical crime.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forensic-note">
+                <p>The category of cybercrime determines the forensic approach. When the computer is the target, network forensics and system analysis are primary. When it is the instrument, the focus is on the specific applications and data used. When incidental, the goal is to extract relevant evidence from among large volumes of unrelated data.</p>
+            </div>
+        </section>
+
+        <!-- Section 12: Chain of Custody Procedures -->
+        <section id="chain-of-custody" class="content-section">
+            <h2>12. Chain of Custody Procedures</h2>
+
+            <div class="definition">
+                <h3>The Three C's</h3>
+                <p>Proper evidence management is built on three fundamental principles known as the <strong>Three C's</strong>: <strong>Care</strong>, <strong>Control</strong>, and <strong>Chain of Custody</strong>. These principles ensure that evidence remains authentic, unaltered, and admissible throughout the entire investigation process.</p>
+            </div>
+
+            <h3>The Three C's Explained</h3>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">The Three C's of Evidence Management</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>Care</h4>
+                        <p>Evidence must be handled with the utmost care to prevent damage, contamination, or alteration. This includes using proper anti-static protection, storing media in appropriate conditions, and using write-blocking devices when accessing digital evidence.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Control</h4>
+                        <p>Evidence must be under strict control at all times. Access must be limited to authorized personnel only. The evidence room must be secured, and every access must be logged and documented.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Chain of Custody</h4>
+                        <p>A complete and unbroken record of who has had possession of the evidence, when they received it, what they did with it, and when they transferred it to the next person. This chain must be documented from collection through court presentation.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Evidence Log Requirements</h3>
+            <p>An evidence log must contain the following information for each piece of evidence:</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Log Element</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Case Number</strong></td>
+                        <td>Unique identifier for the case</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Evidence Description</strong></td>
+                        <td>Detailed description of the evidence item (make, model, serial number)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Date/Time Collected</strong></td>
+                        <td>Exact date and time the evidence was collected</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Collected By</strong></td>
+                        <td>Name and badge/ID number of the person who collected the evidence</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Location Found</strong></td>
+                        <td>Precise location where the evidence was found</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Transfer Records</strong></td>
+                        <td>Each transfer including date, time, from whom, to whom, and purpose</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Mirror-Image Copies</h3>
+            <p>A critical part of chain of custody procedures is the creation of <strong>mirror-image copies</strong> (forensic images) of all digital evidence. These are exact, bit-by-bit copies of the original storage media that include:</p>
+            <ul>
+                <li>All active files and folders</li>
+                <li>Deleted files and file fragments</li>
+                <li>Unallocated space</li>
+                <li>File slack space</li>
+                <li>System files and metadata</li>
+            </ul>
+
+            <div class="key-message">
+                <p><strong>Critical Rule:</strong> All forensic analysis must be performed on the mirror-image copy, never on the original evidence. The original must be preserved in a secure location in its unaltered state.</p>
+            </div>
+        </section>
+
+        <!-- Section 13: Report Procedures -->
+        <section id="report-procedures" class="content-section">
+            <h2>13. Report Procedures</h2>
+
+            <div class="definition">
+                <h3>Objectivity in Reporting</h3>
+                <p>Forensic reports must be completely <strong>objective</strong>. The investigator's role is to present <strong>facts only</strong> -- what was found, how it was found, and what the evidence shows. The report must not contain <strong>opinions on guilt or innocence</strong>.</p>
+            </div>
+
+            <h3>Report Writing Guidelines</h3>
+            <ul>
+                <li><strong>Present facts, not opinions:</strong> Describe what the evidence shows without drawing conclusions about guilt</li>
+                <li><strong>Use precise language:</strong> Avoid ambiguous terms; be specific about dates, times, file names, and locations</li>
+                <li><strong>Document methodology:</strong> Explain the tools and techniques used for analysis</li>
+                <li><strong>Include all findings:</strong> Report both inculpatory (incriminating) and exculpatory (exonerating) evidence</li>
+                <li><strong>Be reproducible:</strong> Another qualified examiner should be able to follow your steps and reach the same findings</li>
+                <li><strong>Use clear organization:</strong> Structure the report logically with an executive summary, methodology, findings, and conclusions</li>
+            </ul>
+
+            <div class="warning-box">
+                <h4>No Opinions on Guilt</h4>
+                <p>The forensic investigator is a <strong>neutral expert</strong>, not an advocate for either side. Reports must never state or imply whether the suspect is guilty or innocent. This is the role of the judge and jury, not the forensic examiner. Expressing opinions on guilt can undermine the credibility of the entire investigation.</p>
+            </div>
+        </section>
+
+        <!-- Section 14: Investigator's Responsibilities -->
+        <section id="responsibilities" class="content-section">
+            <h2>14. Investigator's Responsibilities</h2>
+
+            <p>A computer forensic investigator carries significant responsibilities that extend beyond technical analysis. These responsibilities ensure the integrity of the investigation and the admissibility of evidence.</p>
+
+            <h3>Core Responsibilities</h3>
+            <ul>
+                <li><strong>Review crimes thoroughly:</strong> Understand the nature of the alleged crime and what evidence might be relevant</li>
+                <li><strong>Maintain objectivity:</strong> Approach every investigation without preconceptions or bias, examining all evidence fairly</li>
+                <li><strong>Follow established procedures:</strong> Adhere to accepted forensic methodologies and organizational protocols at all times</li>
+                <li><strong>Keep detailed logs:</strong> Document every action taken during the investigation, including tools used, commands executed, and observations made</li>
+                <li><strong>Protect evidence integrity:</strong> Ensure evidence is never altered, damaged, or contaminated</li>
+                <li><strong>Stay current:</strong> Continuously update knowledge of forensic tools, techniques, and legal requirements</li>
+                <li><strong>Maintain professional ethics:</strong> Conduct investigations honestly, impartially, and within the bounds of the law</li>
+                <li><strong>Prepare for testimony:</strong> Be ready to explain findings and methods in court in a clear and understandable manner</li>
+            </ul>
+
+            <div class="forensic-note">
+                <p>The investigator serves as the bridge between the digital evidence and the legal system. Their competence, integrity, and professionalism directly affect whether justice is achieved. A single procedural error or ethical lapse can compromise an entire case.</p>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section id="summary" class="content-section summary">
+            <h2>Summary and Key Takeaways</h2>
+
+            <h3>What We've Learned</h3>
+            <ol>
+                <li><strong>Evidence admissibility</strong> requires legal search and seizure, proper chain of custody, and accepted forensic methods. The judge must accept the evidence for it to be considered in court.</li>
+
+                <li><strong>The CD Universe case</strong> demonstrates the devastating consequences of improper evidence handling -- the FBI's use of original data instead of forensic copies compromised the prosecution.</li>
+
+                <li><strong>Digital profiling</strong> uses e-evidence from computer data, email, cell phones, and wiretaps to build behavioral profiles and patterns of suspects.</li>
+
+                <li><strong>Many high-profile crimes</strong> have been solved using digital forensics, from the BTK killer (floppy disk metadata) to the 9/11 conspiracy (laptop evidence).</li>
+
+                <li><strong>Forensic investigation methods</strong> include protecting the suspect's system, discovering all files, recovering deleted files, revealing hidden files, accessing encrypted data, steganalysis, and analyzing unallocated/slack space.</li>
+
+                <li><strong>Unallocated space and file slack</strong> are critical areas where deleted and hidden data can be recovered by forensic investigators.</li>
+
+                <li><strong>Evidence can be challenged</strong> through suppression hearings. Proper procedures and ethical conduct are essential to withstand legal challenges.</li>
+
+                <li><strong>Search warrants</strong> require probable cause and affidavits. Exceptions include consent, plain view, and exigent circumstances.</li>
+
+                <li><strong>Cybercrime motives</strong> include financial gain, cover-ups, evidence removal, theft, and industrial espionage.</li>
+
+                <li><strong>Cybercrimes fall into three categories</strong>: computer as target, computer as instrument, and computer as incidental.</li>
+
+                <li><strong>Chain of custody</strong> follows the Three C's (Care, Control, Chain of Custody) and requires evidence logs and mirror-image copies.</li>
+
+                <li><strong>Reports must be objective</strong>, presenting facts only without opinions on guilt. Investigators must maintain objectivity and follow procedures.</li>
+            </ol>
+
+            <div class="key-message">
+                <p><strong>Looking Ahead:</strong> In Week 4, we will explore digital evidence practices in depth, including setting up and managing digital forensics laboratories, types of forensic labs, and security measures for evidence handling.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section id="image-credits">
+            <h2>Credits and Attributions</h2>
+            <p class="credits-intro">All diagrams in this document are original educational works created specifically for this course.</p>
+            <ul class="credits-list">
+                <li><strong>Evidence Admissibility Diagram:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+                <li><strong>Digital Profiling Sources:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+                <li><strong>Cybercrime Motives Grid:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+                <li><strong>Three C's Diagram:</strong> Original educational diagram. Licensed under CC BY 4.0</li>
+            </ul>
+        </section>
+
+        <p style="text-align: center; margin-top: 2rem;">
+            <a href="../index.html">&larr; Back to Course Home</a>
+        </p>
+    </footer>
+</body>
+</html>
