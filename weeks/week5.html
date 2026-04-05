@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 5: Computer Forensics Tools (1)</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <a href="week5_ar.html" class="lang-button" title="Switch to Arabic">العربية</a>
+    </div>
+
+    <header>
+        <h1>Computer Forensics Tools</h1>
+        <p class="subtitle">Week 5: Generating Reports and Using Forensic Software</p>
+    </header>
+
+    <nav class="table-of-contents no-print">
+        <h2>Contents</h2>
+        <ul>
+            <li><a href="#objectives">Learning Objectives</a></li>
+            <li><a href="#introduction">1. Introduction to Forensics Software Tools</a></li>
+            <li><a href="#importance">2. Importance of Forensics Tools</a></li>
+            <li><a href="#report-formats">3. Report Formats and Generation</a></li>
+            <li><a href="#prodiscover">4. Using ProDiscover Basic</a></li>
+            <li><a href="#prodiscover-search">5. ProDiscover: Searching and Filtering Evidence</a></li>
+            <li><a href="#ftk-intro">6. Introduction to FTK (Forensic Toolkit)</a></li>
+            <li><a href="#ftk-evidence">7. FTK: Adding and Analyzing Evidence</a></li>
+            <li><a href="#ftk-search">8. FTK: Searching and Indexing</a></li>
+            <li><a href="#ftk-bookmarks">9. FTK: Bookmarks and Report Generation</a></li>
+            <li><a href="#report-writing">10. Forensic Report Writing Best Practices</a></li>
+            <li><a href="#report-structure">11. Report Structure and Presentation</a></li>
+            <li><a href="#tool-comparison">12. Comparing Forensics Tools</a></li>
+            <li><a href="#summary">Summary</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Learning Objectives -->
+        <section id="objectives" class="learning-objectives">
+            <h2>Learning Objectives</h2>
+            <p>By the end of this week, you will be able to:</p>
+            <ul>
+                <li>Explain the importance of forensics tools in digital investigations</li>
+                <li>Describe how forensics software tools generate report findings</li>
+                <li>Use ProDiscover Basic to search for evidence and generate reports</li>
+                <li>Use FTK to create cases, analyze evidence, perform keyword searches, and generate reports</li>
+                <li>Apply best practices for writing clear, objective forensic reports</li>
+            </ul>
+        </section>
+
+        <!-- Section 1: Introduction -->
+        <section id="introduction" class="content-section">
+            <h2>1. Introduction to Forensics Software Tools</h2>
+
+            <div class="definition">
+                <h3>What are Computer Forensics Tools?</h3>
+                <p><strong>Computer forensics tools</strong> are specialized software applications designed to assist investigators in acquiring, analyzing, and reporting on digital evidence. These tools provide a structured, repeatable approach to examining digital media while maintaining the integrity of the original evidence.</p>
+            </div>
+
+            <p>Forensic software tools are indispensable in modern digital investigations. The volume of data on even a single hard drive can be enormous -- terabytes of files, emails, logs, and metadata. Without specialized tools, examining this data manually would be impractical and error-prone. Forensics tools automate many aspects of the investigation process, enabling examiners to work efficiently while producing results that are legally admissible.</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Core Functions of Forensics Tools</h3>
+                </div>
+                <div class="evidence-grid">
+                    <div class="evidence-card evidence-artifact">
+                        <div class="evidence-icon">&#128190;</div>
+                        <h4>Evidence Acquisition</h4>
+                        <p>Create forensic images (bit-for-bit copies) of storage media using write-blocking technology, ensuring the original evidence remains unaltered.</p>
+                    </div>
+                    <div class="evidence-card evidence-inculpatory">
+                        <div class="evidence-icon">&#128269;</div>
+                        <h4>Analysis and Examination</h4>
+                        <p>Recover deleted files, analyze file systems, perform keyword searches, examine email archives, and build timelines of user activity.</p>
+                    </div>
+                    <div class="evidence-card evidence-exculpatory">
+                        <div class="evidence-icon">&#128196;</div>
+                        <h4>Documentation and Reporting</h4>
+                        <p>Generate structured reports in multiple formats, bookmark important findings, and create a clear record of the examination process.</p>
+                    </div>
+                    <div class="evidence-card evidence-admissible">
+                        <div class="evidence-icon">&#9989;</div>
+                        <h4>Verification and Validation</h4>
+                        <p>Calculate and verify hash values, maintain audit trails of all examiner actions, and ensure results are reproducible by other examiners.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Key Insight:</strong> Forensics tools must be validated and accepted by the courts. Using unvalidated or unreliable tools can result in evidence being excluded from legal proceedings, regardless of what the evidence actually shows.</p>
+            </div>
+        </section>
+
+        <!-- Section 2: Importance -->
+        <section id="importance" class="content-section">
+            <h2>2. Importance of Forensics Tools</h2>
+
+            <p>Forensics tools are not merely convenient -- they are essential to the success and credibility of any digital investigation. Their importance extends beyond technical capability into the legal and procedural domains.</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Why Forensics Tools Matter</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>Legal Admissibility</h4>
+                        <p>Courts require that digital evidence be collected and analyzed using validated, accepted tools. Evidence gathered using ad-hoc methods or unproven software risks being challenged and excluded. Forensics tools provide the standardized methodology that courts expect.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Handling Massive Data Volumes</h4>
+                        <p>Modern storage devices contain terabytes of data -- millions of files, emails, and log entries. Manual examination is simply not feasible. Forensics tools automate searching, filtering, and categorizing data, allowing examiners to focus on relevant evidence.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Repeatability and Verification</h4>
+                        <p>A fundamental principle of forensic science is that another qualified examiner should be able to reproduce the same results using the same tools and methodology. Forensics tools support this by maintaining detailed logs of every action performed during the examination.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Chain of Custody Support</h4>
+                        <p>Forensics tools maintain comprehensive audit trails that document every action taken on the evidence -- from acquisition through analysis to reporting. These logs are essential for demonstrating that the chain of custody was maintained throughout the investigation.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Efficiency Under Time Pressure</h4>
+                        <p>Investigations often face legal deadlines, court dates, and time-sensitive circumstances. Forensics tools dramatically reduce the time required to search, analyze, and report on digital evidence, enabling examiners to meet these critical deadlines.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forensic-note">
+                <p>A forensic tool is only as good as the examiner using it. Tools do not replace expertise -- they augment it. An examiner must understand what the tool is doing, why, and how to interpret the results. Blind reliance on tool output without understanding can lead to incorrect conclusions.</p>
+            </div>
+        </section>
+
+        <!-- Section 3: Report Formats -->
+        <section id="report-formats" class="content-section">
+            <h2>3. Report Formats and Generation</h2>
+
+            <p>Forensic software tools generate reports when performing analysis. These reports serve as the primary documentation of the examiner's findings and are often the most important deliverable of an investigation. Different formats serve different audiences and purposes.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Report Format</th>
+                        <th>Description</th>
+                        <th>Best Used For</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Plaintext (.txt)</strong></td>
+                        <td>Simple, unformatted text output with no styling or embedded images</td>
+                        <td>Machine-readable logs, quick reference, archival, and situations where formatting is unnecessary</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Word Processor (.doc/.rtf)</strong></td>
+                        <td>Formatted documents with headers, tables, styling, and embedded images</td>
+                        <td>Formal court reports, attorney review, official documentation requiring professional presentation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>HTML (.html)</strong></td>
+                        <td>Web-based format with hyperlinks, navigation, and embedded media</td>
+                        <td>Interactive reports, web-based case management systems, sharing with distributed investigation teams</td>
+                    </tr>
+                    <tr>
+                        <td><strong>PDF (.pdf)</strong></td>
+                        <td>Fixed-layout document format that preserves formatting across all platforms</td>
+                        <td>Final distribution, tamper-resistant sharing, court submission, and long-term archival</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p>Most forensic tools allow the examiner to choose which findings to include in the report, filter results, and customize the report structure. This flexibility is important because different stakeholders need different levels of detail -- a technical report for another examiner will differ significantly from an executive summary for a non-technical audience.</p>
+
+            <div class="key-message">
+                <p><strong>Important:</strong> Regardless of format, every forensic report must be accurate, complete, and objective. The format is the delivery mechanism; the content and its accuracy are what ultimately matter in court.</p>
+            </div>
+        </section>
+
+        <!-- Section 4: ProDiscover Basic -->
+        <section id="prodiscover" class="content-section">
+            <h2>4. Using ProDiscover Basic</h2>
+
+            <div class="definition">
+                <h3>What is ProDiscover Basic?</h3>
+                <p><strong>ProDiscover Basic</strong> is a forensic investigation tool that enables examiners to create forensic images of storage media, search for evidence within disk images, and generate reports. The Basic edition provides essential capabilities for disk analysis and evidence examination, making it an excellent starting point for learning forensic investigation techniques.</p>
+            </div>
+
+            <p>Working with ProDiscover follows a structured workflow. Every investigation begins with creating a project, adding evidence, and then systematically searching and analyzing the data. This structured approach ensures consistency and thoroughness across investigations.</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">ProDiscover Basic Workflow</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>Step 1: Create a New Project</h4>
+                        <p>Every investigation in ProDiscover begins with creating a project. The project serves as a container that stores all case metadata, evidence files, search results, and bookmarks. Proper project setup ensures that all investigation activities are organized and documented from the start.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Step 2: Add an Image File</h4>
+                        <p>Load a forensic disk image (e.g., .dd, .E01, .eve format) into the project. ProDiscover reads the image without modifying the original file, preserving evidence integrity. The tool mounts the image as a virtual drive, allowing the examiner to navigate its contents as if it were a live disk.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Step 3: Navigate the File System</h4>
+                        <p>Once the image is loaded, ProDiscover displays the file system structure in a tree view. The examiner can browse directories, view file properties (including timestamps, permissions, and sizes), and identify areas of interest for further analysis.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Step 4: Search for Evidence</h4>
+                        <p>Use ProDiscover's search capabilities to locate specific file types, search for keywords within file content, or filter files by date ranges. The search results can be reviewed, selected, and bookmarked for inclusion in the final report.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forensic-note">
+                <p>Always verify the hash value (MD5 or SHA-1) of the forensic image before and after loading it into ProDiscover. This verification confirms that the evidence has not been altered during the loading process, which is essential for maintaining the chain of custody.</p>
+            </div>
+        </section>
+
+        <!-- Section 5: ProDiscover Search -->
+        <section id="prodiscover-search" class="content-section">
+            <h2>5. ProDiscover: Searching and Filtering Evidence</h2>
+
+            <p>One of ProDiscover's key capabilities is its ability to search for specific file types and content within a forensic image. The search functionality allows examiners to quickly locate relevant evidence among potentially millions of files.</p>
+
+            <h3>Searching by File Extension</h3>
+            <p>ProDiscover allows examiners to search for files based on their extensions. This is useful for locating specific types of files -- for example, searching for <code>.ods</code>, <code>.doc</code>, <code>.xls</code>, or <code>.dbx</code> files to find documents and email databases. The search dialog provides options for case sensitivity, pattern matching, and selecting which disk(s) to search.</p>
+
+            <figure>
+                <img src="images/week5/slide5_img1.png" alt="ProDiscover search dialog showing file extension search options with fields for file name patterns and disk selection" class="content-image">
+                <figcaption>Figure 14-2: Searching for file extensions in ProDiscover Basic</figcaption>
+            </figure>
+
+            <p>The search dialog shown above allows the examiner to specify file name patterns (such as <code>*.ods</code>, <code>*.doc</code>, <code>*.dbx</code>), choose whether to search in meta files or selected files only, and select which disk or image to search. Additional options include case sensitivity and whole-word matching, which help refine results and reduce false positives.</p>
+
+            <h3>Reviewing Search Results</h3>
+            <p>After the search completes, ProDiscover displays the results in a list showing the file name, full path, and location within the forensic image. The examiner can then select relevant files for further analysis, export them, or bookmark them for inclusion in the report.</p>
+
+            <figure>
+                <img src="images/week5/slide6_img2.png" alt="ProDiscover search results showing a list of files with checkboxes, file names, and their full paths within the forensic image" class="content-image">
+                <figcaption>Figure 14-3: Selecting files in the search results</figcaption>
+            </figure>
+
+            <p>In the results view above, notice how each file is listed with its full path, making it easy to understand where the file was located on the original disk. The examiner can select individual files using checkboxes, allowing precise control over which files are analyzed further or included in reports. Files such as <code>Folders.dbx</code>, <code>Inbox.dbx</code>, and <code>Sent Items.dbx</code> indicate the presence of email databases, which could be critical evidence in many investigations.</p>
+
+            <div class="key-message">
+                <p><strong>Important:</strong> Search results should always be reviewed carefully. Automated searches may return false positives or miss relevant files that have been renamed with incorrect extensions. Comparing file extensions with file headers (magic numbers) can reveal files that have been deliberately disguised.</p>
+            </div>
+        </section>
+
+        <!-- Section 6: FTK Introduction -->
+        <section id="ftk-intro" class="content-section">
+            <h2>6. Introduction to FTK (Forensic Toolkit)</h2>
+
+            <div class="definition">
+                <h3>What is FTK?</h3>
+                <p><strong>FTK (Forensic Toolkit)</strong> is a comprehensive forensic investigation platform developed by AccessData (now Exterro). It is one of the most widely used forensic tools in both law enforcement and corporate investigations. FTK is known for its powerful indexing engine that pre-processes evidence to enable extremely fast searches across large datasets.</p>
+            </div>
+
+            <p>Unlike ProDiscover, which focuses primarily on disk analysis, FTK provides a full-featured investigation platform with email parsing, registry analysis, graphics analysis, and advanced search capabilities. It is designed to handle complex, multi-faceted investigations that involve large volumes of data from multiple sources.</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Key Capabilities of FTK</h3>
+                </div>
+                <div class="evidence-grid">
+                    <div class="evidence-card evidence-artifact">
+                        <div class="evidence-icon">&#128187;</div>
+                        <h4>Full Disk Analysis</h4>
+                        <p>Examine file systems in detail, recover deleted files, analyze unallocated space and file slack, and reconstruct fragmented files across the entire disk image.</p>
+                    </div>
+                    <div class="evidence-card evidence-inculpatory">
+                        <div class="evidence-icon">&#9993;</div>
+                        <h4>Email Parsing</h4>
+                        <p>Extract and analyze email archives from multiple formats including PST, OST, MBOX, DBX, and EML. View individual messages, attachments, and email metadata.</p>
+                    </div>
+                    <div class="evidence-card evidence-exculpatory">
+                        <div class="evidence-icon">&#128269;</div>
+                        <h4>Advanced Searching</h4>
+                        <p>Perform both indexed and live searches with support for regular expressions, keyword lists, Boolean operators, and proximity searches across all evidence sources.</p>
+                    </div>
+                    <div class="evidence-card evidence-admissible">
+                        <div class="evidence-icon">&#128278;</div>
+                        <h4>Bookmarking and Reporting</h4>
+                        <p>Organize important findings with named bookmarks, add examiner notes, and generate comprehensive case reports that include all bookmarked evidence items.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forensic-note">
+                <p>FTK Demo (also referred to as FTK Imager in some contexts) is a free version with limited functionality. It is useful for learning forensic concepts and performing basic investigations. The full version of FTK requires a commercial license and provides the complete set of analysis capabilities.</p>
+            </div>
+        </section>
+
+        <!-- Section 7: FTK Evidence -->
+        <section id="ftk-evidence" class="content-section">
+            <h2>7. FTK: Adding and Analyzing Evidence</h2>
+
+            <p>Working with FTK follows a case-based workflow. Each investigation is organized as a case, with evidence items added to the case for processing and analysis. The structured workflow ensures comprehensive analysis and proper documentation.</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">FTK Investigation Workflow</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>Step 1: Create a New Case</h4>
+                        <p>Define the case name, examiner information, and case details. This metadata is included in all reports generated from the case. Proper case setup ensures that every piece of evidence and analysis is associated with the correct investigation.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Step 2: Add Evidence to the Case</h4>
+                        <p>Add forensic images, logical drives, or individual files to the case. FTK supports multiple evidence formats including E01, dd, AFF, and others. Multiple evidence items can be added to a single case, allowing cross-source analysis.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Step 3: Evidence Processing</h4>
+                        <p>FTK automatically processes the evidence upon addition, building a comprehensive index of all file content. This indexing step is what enables the extremely fast search capabilities that FTK is known for. Processing may take time for large evidence items but pays dividends during analysis.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Step 4: Analyze Evidence</h4>
+                        <p>Examine files organized by category: documents, images, email, encrypted files, executables, and more. FTK automatically categorizes files based on their content and headers, not just extensions, providing a more accurate classification of evidence.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Extracting Email Files</h3>
+            <p>FTK can parse email archives and extract individual messages for analysis. When working with email evidence, the examiner selects the folder where extracted email files should be stored. This is particularly important in cases involving communication evidence, such as fraud, harassment, or data exfiltration investigations.</p>
+
+            <figure>
+                <img src="images/week5/slide8_img3.png" alt="FTK Browse for Folder dialog showing directory tree for selecting where to store extracted email files" class="content-image">
+                <figcaption>Figure 14-4: Selecting the folder for extracted e-mail files in FTK</figcaption>
+            </figure>
+
+            <p>The folder browser shown above allows the examiner to choose a destination for extracted email data. Notice the directory structure showing the case files organized by chapter and project. Proper file organization during extraction ensures that evidence remains traceable and well-documented throughout the investigation.</p>
+        </section>
+
+        <!-- Section 8: FTK Search -->
+        <section id="ftk-search" class="content-section">
+            <h2>8. FTK: Searching and Indexing</h2>
+
+            <p>FTK provides two distinct search methods, each suited to different investigation needs. Understanding when to use each type is critical for efficient and thorough evidence examination.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Search Type</th>
+                        <th>How It Works</th>
+                        <th>Speed</th>
+                        <th>When to Use</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Indexed Search</strong></td>
+                        <td>Searches the pre-built index created during evidence processing. Looks up terms in the index rather than scanning raw data.</td>
+                        <td>Very fast</td>
+                        <td>When evidence has been fully processed and indexed. Best for keyword searches across large datasets where speed is essential.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Live Search</strong></td>
+                        <td>Searches the raw evidence data byte-by-byte, examining every sector of the disk image in real time.</td>
+                        <td>Slower</td>
+                        <td>When searching for patterns not captured by indexing (hex patterns, specific byte sequences), when evidence has not been fully indexed, or when verifying indexed search results.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Performing an Indexed Search</h3>
+            <p>The indexed search interface in FTK allows the examiner to enter search terms, import keyword lists, and configure search options. Results show the number of hits, the file where each hit was found, and the context of the match. The examiner can navigate directly to any hit to view it in context.</p>
+
+            <figure>
+                <img src="images/week5/slide9_img4.png" alt="FTK indexed search interface showing search results for the keyword terrysadler with hit counts and file locations" class="content-image">
+                <figcaption>Figure 14-5: Indexed search results for the name "terrysadler" in FTK</figcaption>
+            </figure>
+
+            <p>In the search results shown above, FTK displays each file containing the search term along with the number of hits found in that file. The results include various file types -- email messages, attachments, and hypertext documents -- demonstrating how a single keyword search can uncover evidence across multiple data sources. The examiner can review each hit in detail, noting the context and significance of the match.</p>
+
+            <div class="key-message">
+                <p><strong>Search Strategy:</strong> Always use multiple search approaches -- keywords, file types, date ranges, hash values -- to ensure comprehensive evidence discovery. Relying on a single search method may miss critical evidence. Cross-referencing results from indexed and live searches strengthens the reliability of findings.</p>
+            </div>
+        </section>
+
+        <!-- Section 9: FTK Bookmarks and Reports -->
+        <section id="ftk-bookmarks" class="content-section">
+            <h2>9. FTK: Bookmarks and Report Generation</h2>
+
+            <p>The bookmark system in FTK is a powerful organizational tool that allows the examiner to tag, categorize, and annotate important evidence items. Bookmarks serve as the bridge between analysis and reporting -- items that are bookmarked become the foundation of the final case report.</p>
+
+            <h3>Creating Bookmarks</h3>
+            <p>During analysis, the examiner identifies files and data that are relevant to the investigation. These items are selected and bookmarked with descriptive names and notes that explain their significance to the case.</p>
+
+            <figure>
+                <img src="images/week5/slide11_img5.png" alt="FTK file list showing selected files including email messages and attachments that have been checked for bookmarking" class="content-image">
+                <figcaption>Figure 14-6: Files selected to be bookmarked in FTK</figcaption>
+            </figure>
+
+            <p>In the file list above, the examiner has selected several files -- including email attachments and messages -- for bookmarking. Each selected file is marked with a checkbox, and the list shows the file name, full path, file type, and category. This selection process allows the examiner to group related evidence items together.</p>
+
+            <h3>Configuring Bookmark Settings</h3>
+            <p>When creating a bookmark, FTK presents a dialog where the examiner can set the bookmark name, add comments explaining the significance of the evidence, and choose report options such as whether to include the bookmark in the final report and whether to export the associated files.</p>
+
+            <figure>
+                <img src="images/week5/slide12_img6.png" alt="FTK Create New Bookmark dialog box with fields for bookmark name, comment, and options to include in report and export files" class="content-image">
+                <figcaption>Figure 14-7: Selecting settings in the Create New Bookmark dialog box</figcaption>
+            </figure>
+
+            <p>The bookmark dialog provides several important options:</p>
+            <ul>
+                <li><strong>Bookmark name:</strong> A descriptive label (e.g., "Terry Sadler Email") that identifies this group of evidence</li>
+                <li><strong>Bookmark comment:</strong> Notes explaining why these items are significant to the investigation</li>
+                <li><strong>Apply to:</strong> Options to apply the bookmark to highlighted items, checked items, or all currently listed items</li>
+                <li><strong>Report options:</strong> Checkboxes to include in the report and export associated files</li>
+            </ul>
+
+            <h3>Generating the Case Report</h3>
+            <p>Once all relevant evidence has been bookmarked and annotated, FTK can generate a comprehensive case report. The report compiles all bookmarked items along with case metadata, examiner information, and the notes added during analysis.</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Report Generation Process</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>1. Select Bookmarks for Report</h4>
+                        <p>Choose which bookmarked items to include in the final report. Not all bookmarks need to be included -- the examiner selects only those relevant to the specific questions being addressed.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>2. Configure Report Settings</h4>
+                        <p>Set the report format (HTML, plaintext, or other), choose whether to include metadata, and add overall examiner notes and conclusions to the report.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>3. Generate the Report</h4>
+                        <p>FTK compiles the selected bookmarks, evidence details, case information, and examiner notes into a formatted report document.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>4. Review and Finalize</h4>
+                        <p>Carefully review the generated report for accuracy, completeness, and clarity before distribution. Verify that all referenced evidence is properly included and that the conclusions are supported by the documented findings.</p>
+                    </div>
+                </div>
+            </div>
+
+            <figure>
+                <img src="images/week5/slide13_img7.png" alt="The completed FTK case report displayed in a browser window showing case information, examiner details, and bookmarked evidence" class="content-image">
+                <figcaption>Figure 14-8: The completed case report generated by FTK</figcaption>
+            </figure>
+
+            <div class="key-message">
+                <p><strong>Key Point:</strong> The report is the primary deliverable of a forensic investigation. A well-organized report with properly bookmarked evidence demonstrates thoroughness and professionalism. The quality of the report directly impacts how the findings are perceived by attorneys, judges, and juries.</p>
+            </div>
+        </section>
+
+        <!-- Section 10: Report Writing Best Practices -->
+        <section id="report-writing" class="content-section">
+            <h2>10. Forensic Report Writing Best Practices</h2>
+
+            <div class="definition">
+                <h3>Expert Witness Reports</h3>
+                <p>Courts require expert witnesses to submit written reports detailing their findings, methodology, and conclusions. These reports serve as the expert's official testimony in written form and are subject to scrutiny by opposing counsel. They must meet high standards of clarity, accuracy, and objectivity.</p>
+            </div>
+
+            <p>Beyond the technical output of forensic tools, the quality of the written report determines whether findings are understood, accepted, and acted upon. A technically thorough investigation is wasted if the report fails to communicate the findings effectively.</p>
+
+            <h3>Critical Report Writing Principles</h3>
+            <ul>
+                <li><strong>Courts require expert witnesses to submit written reports:</strong> The report serves as the expert's official testimony in written form. It must be comprehensive enough to stand on its own, even without oral testimony to supplement it.</li>
+                <li><strong>Attorneys use deposition banks:</strong> Attorneys maintain databases of depositions and reports from previous cases. They will compare your current report with past testimony to identify inconsistencies. Accuracy and precision are therefore critical across all reports, not just the current one.</li>
+                <li><strong>Reports should answer the retained questions:</strong> The examiner was hired to answer specific questions. The report must directly and clearly address each question with well-supported answers. Tangential findings, while noted, should not distract from the primary objectives.</li>
+            </ul>
+
+            <div class="forensic-note">
+                <p>A forensic report is not just a collection of findings. It is a persuasive document that must convince technically unsophisticated readers -- judges and jurors -- that the conclusions are valid. The bridge between technical analysis and legal comprehension is the quality of the writing.</p>
+            </div>
+        </section>
+
+        <!-- Section 11: Report Structure -->
+        <section id="report-structure" class="content-section">
+            <h2>11. Report Structure and Presentation</h2>
+
+            <p>The way a report is structured and written has a direct impact on its effectiveness. A well-organized report guides the reader through the evidence logically, while poor organization can obscure important findings and undermine the examiner's credibility.</p>
+
+            <div class="diagram-container">
+                <div class="diagram-title-section">
+                    <h3 class="diagram-title">Principles of Effective Report Writing</h3>
+                </div>
+                <div class="discovery-methods">
+                    <div class="discovery-method">
+                        <h4>Well-Defined Structure Aids Comprehension</h4>
+                        <p>A clear, logical structure -- executive summary, methodology, findings, analysis, conclusions -- helps readers follow the investigation and understand the results. Each section should flow naturally into the next, building a coherent narrative from evidence to conclusions.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Clarity of Writing is Critical</h4>
+                        <p>Use plain language wherever possible. Avoid unnecessary jargon. When technical terms are required, define them clearly. Short sentences and paragraphs improve readability. Remember that the primary audience -- judges and jurors -- may have no technical background.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Convey a Tone of Objectivity</h4>
+                        <p>The report must present facts, not opinions. Avoid advocacy language and be isolated in your observations. Describe what was found and what it means without bias toward either side of the case. Objectivity is the foundation of the examiner's credibility.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Support Every Conclusion with Evidence</h4>
+                        <p>Every conclusion in the report must be directly supported by the evidence described in the findings section. Unsupported conclusions undermine the entire report's credibility. Use specific references to evidence items, hash values, and file paths to anchor conclusions to facts.</p>
+                    </div>
+                    <div class="discovery-method">
+                        <h4>Include Limitations and Caveats</h4>
+                        <p>Transparently describe any limitations of the analysis: evidence that was unavailable, encrypted data that could not be decrypted, corrupted files, or tools that produced inconclusive results. Acknowledging limitations actually strengthens credibility by demonstrating honesty and rigor.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="key-message">
+                <p><strong>Common Mistakes to Avoid:</strong> Providing personal opinions instead of factual observations; using overly technical language for a non-technical audience; failing to address the specific questions posed by the retaining party; omitting methodology details that would allow another examiner to reproduce the analysis; and drawing conclusions that extend beyond what the evidence actually supports.</p>
+            </div>
+        </section>
+
+        <!-- Section 12: Tool Comparison -->
+        <section id="tool-comparison" class="content-section">
+            <h2>12. Comparing Forensics Tools</h2>
+
+            <p>Different forensic tools have different strengths, and the choice of tool depends on the complexity of the investigation, the volume of evidence, budget constraints, and court acceptance. The following table compares the two tools covered in this week's material.</p>
+
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>ProDiscover Basic</th>
+                        <th>FTK (Forensic Toolkit)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Cost</strong></td>
+                        <td>Free / Low-cost</td>
+                        <td>Demo version free; Full version requires commercial license</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Disk Imaging</strong></td>
+                        <td>Yes</td>
+                        <td>Yes (via FTK Imager)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>File System Analysis</strong></td>
+                        <td>Basic file system navigation and analysis</td>
+                        <td>Comprehensive analysis with automatic file categorization</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Search Capabilities</strong></td>
+                        <td>File extension and keyword search</td>
+                        <td>Indexed search + Live search, regex, Boolean operators</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Email Analysis</strong></td>
+                        <td>Limited</td>
+                        <td>Full email parsing (PST, OST, MBOX, DBX, EML)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Bookmarking</strong></td>
+                        <td>Basic</td>
+                        <td>Advanced with named categories and comments</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Report Generation</strong></td>
+                        <td>Basic text and HTML reports</td>
+                        <td>Comprehensive reports from bookmarked evidence</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Best For</strong></td>
+                        <td>Learning, training, basic disk investigations</td>
+                        <td>Professional casework, large datasets, complex multi-source investigations</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="key-message">
+                <p><strong>Choosing the Right Tool:</strong> The choice of forensic tool depends on the specific requirements of the investigation. Many professional examiners use multiple tools to cross-verify findings -- if two different tools produce the same results from the same evidence, the findings are significantly more credible in court.</p>
+            </div>
+        </section>
+
+        <!-- Summary -->
+        <section id="summary" class="content-section summary">
+            <h2>Summary and Key Takeaways</h2>
+
+            <h3>What We've Learned</h3>
+            <ol>
+                <li><strong>Forensic software tools</strong> are essential for acquiring, analyzing, and reporting on digital evidence in a manner that meets legal standards for admissibility and repeatability.</li>
+
+                <li><strong>Forensics tools serve four core functions:</strong> evidence acquisition, analysis and examination, documentation and reporting, and verification and validation.</li>
+
+                <li><strong>Reports can be generated in multiple formats</strong> -- plaintext, word processor, HTML, and PDF -- each suited to different audiences and purposes.</li>
+
+                <li><strong>ProDiscover Basic</strong> provides foundational forensic capabilities including project management, disk image analysis, file system navigation, and file extension searching.</li>
+
+                <li><strong>FTK (Forensic Toolkit)</strong> offers a comprehensive investigation platform with powerful indexing, email parsing, advanced search capabilities, and a robust bookmark system.</li>
+
+                <li><strong>FTK provides two search types:</strong> indexed search (fast, uses pre-built index) and live search (slower, searches raw data byte-by-byte). Both have specific use cases.</li>
+
+                <li><strong>Bookmarks in FTK</strong> allow examiners to organize and annotate important evidence items, which then form the basis of the generated case report.</li>
+
+                <li><strong>Courts require expert witnesses</strong> to submit detailed written reports that answer the specific questions they were retained to address.</li>
+
+                <li><strong>Attorneys use deposition banks</strong> to check for consistency across an expert's previous testimony, making accuracy and precision in every report crucial.</li>
+
+                <li><strong>Effective reports</strong> require well-defined structure, clear writing, objective tone, evidence-supported conclusions, and transparent acknowledgment of limitations.</li>
+
+                <li><strong>Multiple tools should be used</strong> to cross-verify findings, strengthening the credibility and reliability of the investigation results.</li>
+            </ol>
+
+            <div class="key-message">
+                <p><strong>Key Takeaway:</strong> Forensic tools are the means; the report is the product. Mastering both the technical use of tools like ProDiscover and FTK, and the art of clear, objective report writing, is essential for any digital forensic examiner. The most sophisticated analysis is worthless if it cannot be communicated effectively to the people who must act on it.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <section id="image-credits">
+            <h2>Credits and Attributions</h2>
+            <p class="credits-intro">Figures in this document are screenshots from forensic software tools, sourced from the course textbook for educational purposes.</p>
+            <ul class="credits-list">
+                <li><strong>Figures 14-2 through 14-8:</strong> Screenshots from ProDiscover Basic and FTK (Forensic Toolkit), sourced from course reference material. Used for educational purposes.</li>
+                <li><strong>All diagrams and tables:</strong> Original educational content created specifically for this course. Licensed under CC BY 4.0</li>
+            </ul>
+        </section>
+
+        <p style="text-align: center; margin-top: 2rem;">
+            <a href="../index.html">&larr; Back to Course Home</a>
+        </p>
+    </footer>
+</body>
+</html>
